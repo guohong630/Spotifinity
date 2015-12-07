@@ -12,11 +12,11 @@ Tasks
 * Search (Lixin)
 * Artist detail (Hong)
 * Taste profile (Xinyue)
-- [x] Ajax requests to create, update, and get taste profiles
-- [x] Create dynamic playlists, play/skip/pause songs, like/dislike songs. 
-- [ ] HTML frame
-	- [ ] Basic HTML elements
-	- [ ] Play widget
-- [ ] User Interaction
-- [ ] Integrate with others
+	- [x] Ajax requests to create, update, and get taste profiles
+	- [x] Create dynamic playlists, play/skip/pause songs, like/dislike songs. 
+	- [ ] HTML frame
+		- [ ] Basic HTML elements
+		- [ ] Play widget
+	- [ ] User Interaction
+	- [ ] Integrate with others
 

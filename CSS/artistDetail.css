@@ -1,0 +1,18 @@
+.artist-block {
+	position: absolute;
+	top: 100px;
+	left: 300px;
+	width: 800px;
+	background-color: #dce1e3;
+	height: 500px;
+
+}
+
+.artist-avatar {
+    display: block;
+    max-width:150px;
+    max-height:230px;
+    width: auto;
+    height: auto;
+}
+

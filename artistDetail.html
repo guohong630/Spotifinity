@@ -6,13 +6,35 @@
   <link href="CSS/artistDetail.css" rel="stylesheet">
 <body>
   <div class="artist-block">
-	<p id="artist-name"></p>
-	<div id="artist-image">
+	  <p id="artist-name"></p>
+  	<div id="artist-image">
 
-	</div> 
+  	</div>
+    <div id="artist-bio"></div>
+  </div> 
+
+  <div id="control">
+    <button class="btn btn-primary btn-success group-action" onclick="searchSimilarArtists()">Similar Artists</button>
+    <button class="btn btn-primary btn-success group-action" onclick="AddToProfile()">Add to Profile</button>
+    <button class="btn btn-primary btn-success group-action" onclick="AddToNew()">Add to New Profile</button>
   </div>
 
+  <div id="blogs"  padding-left="10%" padding-top="100px">
+    <table class="table table-hover" id="blog_list">
+      <tbody>
+        <tr id='blog0'>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="news-section">
+    
+  </div> 
+
 <script src="Javascript/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="Javascript/echonest.js"> </script>
 <script type="text/javascript" src="Javascript/bootstrap.min.js"> </script>
 <script type="text/javascript" src="Javascript/artistDetail.js"></script>
 </body>

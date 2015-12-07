@@ -3,12 +3,18 @@
 	top: 100px;
 	left: 300px;
 	width: 800px;
-	background-color: #dce1e3;
-	height: 500px;
+	background-color: #ffd480;
+	height: 400px;
+}
 
+#artist-name {
+	position: relative;
+	left: 40px;
 }
 
 .artist-avatar {
+	position: relative;
+	left: 30px;
     display: block;
     max-width:150px;
     max-height:230px;
@@ -16,3 +22,82 @@
     height: auto;
 }
 
+.news-section{
+	position: absolute;
+	top: 500px;
+	left: 300px;
+	width: 800px;
+}
+
+.news-block{
+	background-color: #DCE1E3; 
+	margin-top: 10px;
+	width: 800px;
+	height: 200px;
+}
+
+.news-title{
+	position: relative;
+	top: 10px;
+	left: 50px;
+}
+
+.news-summary{
+	position: relative;
+	top: 10px;
+	width: 750px;
+	left: 25px;
+	height: 100px;
+}
+
+.news-link{
+	position: relative;
+	top: 20px;
+	left: 350px;
+}
+
+.bio-text{
+	position: relative;
+	height: 60px;
+	width: 570px;
+	left: 10px;
+	overflow: hidden;
+}
+
+.ellipsis{
+	position: relative;
+	left: 10px;
+	top: -15px;
+}
+
+#bio-link{
+	position: relative;
+	left: 500px;
+	top: -35px;
+}
+
+#artist-bio{
+	position: relative;
+	left: 190px;
+	top: -90px;
+	height: 90px;
+	width: 600px;
+	border: 1px solid black;
+}
+
+#blogs{
+	position: absolute;
+	top: 300px;
+	left: 400px;
+	height: 190px;
+	width: 600px;
+	background-color: #DCE1E3;
+}
+
+#control{
+	position: absolute;
+	width: 600px;
+	height: 50px;
+	left: 600px;
+	top: 250px;
+}

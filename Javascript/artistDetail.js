@@ -26,15 +26,29 @@ $(document).ready(function(){
       }
   	});
 
-
 	$.ajax({
       type: "GET",
       dataType: "json",
       cache: false,
       url: "https://api.spotify.com/v1/artists/"+artist_id_spotify+"/top-tracks?country=US",
       success: function(data) {
-      	console.log('test trakc',data);
+ 		console.log(data);
+ 		var trackArr = data.tracks;
+ 		var songs_uri = 'spotify:trackset:PREFEREDTITLE:';
+ 		for (var i = 0; i < 4 && i < trackArr.length; i++) {
+ 			var uri = trackArr[i].uri.split(':')[2];
+ 			if (i === 0) {
+ 				songs_uri = songs_uri + uri; 
+ 			} else {
+ 				songs_uri = songs_uri +','+ uri;
+ 			}
+ 		}
 
+ 		$('#playerButton').html(
+ 			'<iframe src="https://embed.spotify.com/?uri='
+ 			+songs_uri
+ 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
+ 		);
       }
   	});
 

@@ -1,4 +1,6 @@
-var artist_id = '5l8VQNuIg0turYE1VtM9zV';
+var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
+var artist_id_spotify = '5l8VQNuIg0turYE1VtM9zV';
+
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
 function getSource(url) {
@@ -14,7 +16,7 @@ $(document).ready(function(){
       type: "GET",
       dataType: "json",
       cache: false,
-      url: "https://api.spotify.com/v1/artists/"+artist_id,
+      url: "https://api.spotify.com/v1/artists/"+artist_id_spotify,
       success: function(data) {
       	console.log(data);
         var artist_name = data.name;
@@ -24,95 +26,15 @@ $(document).ready(function(){
       }
   	});
 
+	searchBlogs(artist_id);
 
-  	// $.ajax({
-   //    type: "GET",
-   //    dataType: "json",
-   //    data: {api_key: API_KEY,
-   //    		id:"spotify:artist" + artist_id},
-   //    cache: false,
-   //    url:"http://developer.echonest.com/api/v4/artist/blogs",
-   //    success: 
-  	// });function(data) {
-   //    	console.log(data);
-   //    	var blogarr = data.response.blogs;
-   //    	for (var i = 0; i < 4; i++) {
-   //    		$('#blog' + i).html(
-   //    			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
-   //    			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
-   //    		);
-   //    		$('#blog_list').append('<tr id="blog' + (i + 1) +'"></tr>');
-   //    	}
-   //    }
-
-   searchblogs(artist_id);
-
-  	$.ajax({
-      type: "GET",
-      dataType: "json",
-      cache: false,
-      url:"http://developer.echonest.com/api/v4/artist/biographies?api_key="+API_KEY+"&id=spotify:artist:"+artist_id,
-      success: function (data) {
-		console.log(data);
-		var bioarr = data.response.biographies;
-		var bio_text;
-		var bio_url;
-		for (var i = 0; i < bioarr.length; i++) {
-			if (bioarr[i].site === "wikipedia") {
-				bio_text = bioarr[i].text;
-				bio_url = bioarr[i].url;
-			}
-		}
-		if (!bio_text) {
-			bio_text = bioarr[0].text;
-			bio_url = bioarr[0].url;
-		}
-		$('#artist-bio').html('<p class="bio-text"> '+bio_text + '</p>'+
-			'<p class="ellipsis">...</p>'+
-			'<a id="bio-link" target="_blank" href="'+bio_url+'">'+'Read More'+'</a>'
-		);
-	}
-
-  	});
+	searchBiographies(artist_id);
     
-
-
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      cache: false,
-      url:"http://developer.echonest.com/api/v4/artist/news?api_key="+API_KEY+"&id=spotify:artist:"+artist_id+"&format=json",
-      success: function(data) {
-      	console.log(data);
-      	var news = data.response.news;
-      	$('news-section').empty();
-      	for (var i = 0; i < 9; i++) {
-      		var title = news[i].name;
-      		var summary = news[i].summary;
-      		var news_url = news[i].url;
-      		var source = getSource(news_url);
-      		$('.news-section').append('<div class="news-block" id="news'+i+'">'); 
-      		$('#news'+i).html( 
-            	'<p class="news-title">' +title+ '</p>'+
-            	'<p class="news-summary">' +summary+ '</p>' +
-            	'<a class="news-link" target="_blank" href="' + news_url+'">' + source+ '</a>' 
-            );
-      	}
-      }
-  	});
-
-    // '<div class="row media-titl<p class="username">'+username+
-    //          '</p> <button class="btn btn-default addToGroup" onclick="addToGroup(this)" value="'+username+'">Add to Group</button> <p class="create-time">'
-    //          +datetime+'</p> </div><div class="row media-image"  align="center"><img src="'+ 
-    //          image_url+'" padding-top="70px" class="image"></div><div class="row media-legend" align="center"><p class="likes"> Likes '+
-    //          likes+'</p> <a target="_blank" href="'+permulink+'" class="btn btn-default media-see-btn">See it on instagram</a> <br> <p class="caption">' +caption+" "+ tags+'</p> </div>')
-
-
-
+	searchNews(artist_id);
 
 });
 
-function searchblogs (artist_id) {
+function searchBlogs (artist_id) {
 	 en.artist.blogs(
 	 	artist_id, 
 	 	function(data) {
@@ -131,6 +53,64 @@ function searchblogs (artist_id) {
 	  	}
 	 );
 }
+
+function searchBiographies (artist_id) {
+	en.artist.biographies(
+		artist_id,
+		function (data) {
+			console.log(data);
+			var bioarr = data.response.biographies;
+			var bio_text;
+			var bio_url;
+			for (var i = 0; i < bioarr.length; i++) {
+				if (bioarr[i].site === "wikipedia") {
+					bio_text = bioarr[i].text;
+					bio_url = bioarr[i].url;
+				}
+			}
+			if (!bio_text) {
+				bio_text = bioarr[0].text;
+				bio_url = bioarr[0].url;
+			}
+			$('#artist-bio').html(
+				'<p class="bio-text"> '+bio_text + '</p>'+
+				'<p class="ellipsis">...</p>'+
+				'<a id="bio-link" target="_blank" href="'+bio_url+'">'+'Read More'+'</a>'
+			);
+		},
+		function() {
+			error("Trouble waiting for biographies");
+	  	}
+	);
+}
+
+function searchNews(artist_id) {
+	en.artist.news(
+	 	artist_id, 
+	 	function(data) {
+	      	console.log(data);
+	      	var news = data.response.news;
+	      	$('news-section').empty();
+	      	for (var i = 0; i < 9; i++) {
+	      		var title = news[i].name;
+	      		var summary = news[i].summary;
+	      		var news_url = news[i].url;
+	      		var source = getSource(news_url);
+	      		$('.news-section').append('<div class="news-block" id="news'+i+'">'); 
+	      		$('#news'+i).html( 
+	            	'<p class="news-title">' +title+ '</p>'+
+	            	'<p class="news-summary">' +summary+ '</p>' +
+	            	'<a class="news-link" target="_blank" href="' + news_url+'">' + source+ '</a>' 
+	            );
+	      	}
+      	}, 
+      	function() {
+			error("Trouble waiting for blogs");
+	  	}
+	 );
+}
+
+
 
 function searchSimilarArtists() {
 	console.log('searchSimilarArtists');

@@ -47,7 +47,12 @@ $(document).ready(function(){
  		$('#playerButton').html(
  			'<iframe src="https://embed.spotify.com/?uri='
  			+songs_uri
- 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
+ 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'+
+ 			'<div id="follower">'+
+      		'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
+      		+artist_id_spotify
+      		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
+      		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
  		);
       }
   	});

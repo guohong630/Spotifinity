@@ -4,7 +4,7 @@
 	left: 300px;
 	width: 800px;
 	background-color: #ffd480;
-	height: 430px;
+	height: 530px;
 }
 
 #artist-name {
@@ -24,7 +24,7 @@
 
 .news-section{
 	position: absolute;
-	top: 530px;
+	top: 630px;
 	left: 300px;
 	width: 800px;
 }
@@ -87,7 +87,7 @@
 
 #blogs{
 	position: absolute;
-	top: 335px;
+	top: 435px;
 	left: 400px;
 	height: 190px;
 	width: 600px;
@@ -98,14 +98,30 @@
 	position: absolute;
 	width: 600px;
 	height: 50px;
-	left: 600px;
-	top: 250px;
+	left: 470px;
+	top: 350px;
+}
+
+#control-button2{
+	position: relative;
+	left: 30px;
+}
+
+#control-button3{
+	position: relative;
+	left: 60px;
 }
 
 #playerButton {
 	position: absolute;
-	left: 330px;
+	left: 430px;
 	top: 250px;
-	width: 250px;
+	width: 800px;
 	height: 80px;
+}
+
+#follower {
+	position: absolute;
+	left: 330px;
+	top: 10px;
 }

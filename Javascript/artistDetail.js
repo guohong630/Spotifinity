@@ -26,6 +26,18 @@ $(document).ready(function(){
       }
   	});
 
+
+	$.ajax({
+      type: "GET",
+      dataType: "json",
+      cache: false,
+      url: "https://api.spotify.com/v1/artists/"+artist_id_spotify+"/top-tracks?country=US",
+      success: function(data) {
+      	console.log('test trakc',data);
+
+      }
+  	});
+
 	searchBlogs(artist_id);
 
 	searchBiographies(artist_id);

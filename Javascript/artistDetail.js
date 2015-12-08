@@ -25,20 +25,53 @@ $(document).ready(function(){
   	});
 
 
-  	$.ajax({
-      type: "GET",
-      dataType: "json",
-      cache: false,
-      url:"http://developer.echonest.com/api/v4/artist/blogs?api_key="+API_KEY+"&id=spotify:artist:"+artist_id,
-      success: searchblogs(data),
-  	});
+  	// $.ajax({
+   //    type: "GET",
+   //    dataType: "json",
+   //    data: {api_key: API_KEY,
+   //    		id:"spotify:artist" + artist_id},
+   //    cache: false,
+   //    url:"http://developer.echonest.com/api/v4/artist/blogs",
+   //    success: 
+  	// });function(data) {
+   //    	console.log(data);
+   //    	var blogarr = data.response.blogs;
+   //    	for (var i = 0; i < 4; i++) {
+   //    		$('#blog' + i).html(
+   //    			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
+   //    			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
+   //    		);
+   //    		$('#blog_list').append('<tr id="blog' + (i + 1) +'"></tr>');
+   //    	}
+   //    }
+
+   searchblogs(artist_id);
 
   	$.ajax({
       type: "GET",
       dataType: "json",
       cache: false,
       url:"http://developer.echonest.com/api/v4/artist/biographies?api_key="+API_KEY+"&id=spotify:artist:"+artist_id,
-      success: 
+      success: function (data) {
+		console.log(data);
+		var bioarr = data.response.biographies;
+		var bio_text;
+		var bio_url;
+		for (var i = 0; i < bioarr.length; i++) {
+			if (bioarr[i].site === "wikipedia") {
+				bio_text = bioarr[i].text;
+				bio_url = bioarr[i].url;
+			}
+		}
+		if (!bio_text) {
+			bio_text = bioarr[0].text;
+			bio_url = bioarr[0].url;
+		}
+		$('#artist-bio').html('<p class="bio-text"> '+bio_text + '</p>'+
+			'<p class="ellipsis">...</p>'+
+			'<a id="bio-link" target="_blank" href="'+bio_url+'">'+'Read More'+'</a>'
+		);
+	}
 
   	});
     
@@ -74,35 +107,31 @@ $(document).ready(function(){
     //          image_url+'" padding-top="70px" class="image"></div><div class="row media-legend" align="center"><p class="likes"> Likes '+
     //          likes+'</p> <a target="_blank" href="'+permulink+'" class="btn btn-default media-see-btn">See it on instagram</a> <br> <p class="caption">' +caption+" "+ tags+'</p> </div>')
 
- //    en.artist.images(artist_id, function(data) {
-	// 	console.log(data);
-	// }, function(data) {
-	// 	error("Trouble waiting for images");
-	// });
+
 
 
 });
 
-function searchblogs (data) {
-	console.log(data);
-	var bioarr = data.response.biographies;
-	var bio_text;
-	var bio_url;
-	for (var i = 0; i < bioarr.length; i++) {
-		if (bioarr[i].site === "wikipedia") {
-			bio_text = bioarr[i].text;
-			bio_url = bioarr[i].url;
-		}
-	}
-	if (!bio_text) {
-		bio_text = bioarr[0].text;
-		bio_url = bioarr[0].url;
-	}
-	$('#artist-bio').html('<p class="bio-text"> '+bio_text + '</p>'+
-		'<p class="ellipsis">...</p>'+
-		'<a id="bio-link" target="_blank" href="'+bio_url+'">'+'Read More'+'</a>'
-	);
+function searchblogs (artist_id) {
+	 en.artist.blogs(
+	 	artist_id, 
+	 	function(data) {
+      		console.log(data);
+	      	var blogarr = data.response.blogs;
+	      	for (var i = 0; i < 4; i++) {
+	      		$('#blog' + i).html(
+	      			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
+	      			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
+	      		);
+	      		$('#blog_list').append('<tr id="blog' + (i + 1) +'"></tr>');
+	      	}
+      	}, 
+      	function() {
+			error("Trouble waiting for blogs");
+	  	}
+	 );
 }
+
 function searchSimilarArtists() {
 	console.log('searchSimilarArtists');
 }

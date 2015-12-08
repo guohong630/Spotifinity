@@ -75,6 +75,9 @@ Artist.prototype.images = function(args, callback, error) {
     this.en.apiRequest('artist/images', args, callback, error);
 }
 
+Artist.prototype.blogs = function(artist_id, callback, error) {
+    this.en.apiRequest('artist/blogs', {id:artist_id}, callback, error);
+}
 
 function Playlist(en) {
     this.en = en;

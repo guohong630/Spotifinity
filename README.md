@@ -13,7 +13,7 @@ Tasks
 * Artist detail (Hong)
 	- [x] Request the data
 	- [x] Finish the initial version of artist detail page 
-	- [ ] Add play button function and Spotify widget 
+	- [x] Add play button function and Spotify widget 
 	- [ ] Hook up interaction with other pages
 	- [ ] Polish user interface
 * Taste profile (Xinyue)

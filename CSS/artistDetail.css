@@ -102,7 +102,7 @@
 	position: absolute;
 	width: 600px;
 	height: 50px;
-	left: 500px;
+	left: 520px;
 	top: 280px;
 }
 
@@ -134,7 +134,7 @@
 	position: relative;
 	height: 32px;
 	width: 32px;
-	left: 110px;
+	left: 100px;
 	top: -30px;
 }
 
@@ -147,4 +147,11 @@
 	position: absolute;
 	left: 330px;
 	top: 280px;
+}
+
+#help {
+	position: relative;
+	width: 100px;
+/*	left: 150px;
+	top: -55px;*/
 }

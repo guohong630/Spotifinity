@@ -10,11 +10,15 @@
 #artist-name {
 	position: relative;
 	left: 40px;
+	top: 20px;
+	font-size: 22px;
+	font-weight: bold;
 }
 
 .artist-avatar {
 	position: relative;
 	left: 30px;
+	top: 30px;
     display: block;
     max-width:150px;
     max-height:230px;
@@ -79,7 +83,7 @@
 #artist-bio{
 	position: relative;
 	left: 190px;
-	top: -90px;
+	top: -60px;
 	height: 90px;
 	width: 600px;
 	border: 1px solid black;
@@ -87,7 +91,7 @@
 
 #blogs{
 	position: absolute;
-	top: 435px;
+	top: 400px;
 	left: 400px;
 	height: 190px;
 	width: 600px;
@@ -98,8 +102,8 @@
 	position: absolute;
 	width: 600px;
 	height: 50px;
-	left: 470px;
-	top: 350px;
+	left: 500px;
+	top: 280px;
 }
 
 #control-button2{
@@ -114,8 +118,8 @@
 
 #playerButton {
 	position: absolute;
-	left: 430px;
-	top: 250px;
+	left: 830px;
+	top: 100px;
 	width: 800px;
 	height: 80px;
 }
@@ -124,4 +128,23 @@
 	position: absolute;
 	left: 330px;
 	top: 10px;
+}
+
+#star-five {
+	position: relative;
+	height: 32px;
+	width: 32px;
+	left: 110px;
+	top: -30px;
+}
+
+#likeLabel {
+	position: relative;
+	top: 5px;
+}
+
+.like-artist {
+	position: absolute;
+	left: 330px;
+	top: 280px;
 }

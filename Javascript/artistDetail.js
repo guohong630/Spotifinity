@@ -1,5 +1,6 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
 var artist_id_spotify = '5l8VQNuIg0turYE1VtM9zV';
+var liked = false;
 
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
@@ -47,12 +48,12 @@ $(document).ready(function(){
  		$('#playerButton').html(
  			'<iframe src="https://embed.spotify.com/?uri='
  			+songs_uri
- 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'+
- 			'<div id="follower">'+
-      		'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
-      		+artist_id_spotify
-      		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
-      		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
+ 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
+ 			// +'<div id="follower">'
+ 			// +'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
+    //   		+artist_id_spotify
+    //   		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
+    //   		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
  		);
       }
   	});
@@ -62,6 +63,8 @@ $(document).ready(function(){
 	searchBiographies(artist_id);
     
 	searchNews(artist_id);
+
+	displayLikeStar(liked);
 
 });
 
@@ -141,7 +144,20 @@ function searchNews(artist_id) {
 	 );
 }
 
+function displayLikeStar(isLiked) {
+	if (isLiked) {
+		console.log('liked');
+		$('#star-five').html('<img src="images/1449708334_star.png" onclick="changeLikeState()">');
+	} else {
+		console.log('unliked');
+		$('#star-five').html('<img src="images/1449708254_star.png" onclick="changeLikeState()">');
+	}
+}
 
+function changeLikeState() {
+	liked = !liked;
+	displayLikeStar(liked);
+}
 
 function searchSimilarArtists() {
 	console.log('searchSimilarArtists');

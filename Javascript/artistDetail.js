@@ -159,7 +159,7 @@ function displayLikeStar(isLiked) {
 		$('#star-five').html('<img src="images/1449708334_star.png" onclick="changeLikeState()">');
 	} else {
 		console.log('unliked');
-		$('#star-five').html('<img src="images/1449708254_star.png" onclick="changeLikeState()">');
+		$('#star-five').html('<img src="images/emptyStar1.png" onclick="changeLikeState()">');
 	}
 }
 

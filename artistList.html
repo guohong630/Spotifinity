@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <html>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link href="CSS/font-awesome.min.css" rel="stylesheet">
+  <link href="CSS/artistList.css" rel="stylesheet">
+<body>
+	<div class="container row" id='searchBox'>
+	</br>
+    <div class="form-group col-md-7">
+      <input placeholder="Search Artists" type="text" class="form-control" id="searchInput" name="search">
+    </div>
+  <form class="form-inline col-md-5" role="form">
+    <div class="form-group">
+      <label class="control-label">By</label>
+    </div>
+    <div class="form-group">
+      <div class="radio">
+        <label class="radio-inline control-label">
+          <input type="radio" id="name_id" name="by" value="0" checked="">
+          Name
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="radio">
+        <label class="radio-inline control-label">
+          <input type="radio" id="style_id" name="by" value="0" checked="">
+          Style
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="radio">
+        <label class="radio-inline control-label">
+          <input type="radio" id="mood_id" name="by" value="1">
+          Mood
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <button style='float: left' onclick='searchArtist();' type="button" class="btn btn-default">Search</button>
+    </div>
+  </form>
+</div>
+
+  <div id="artistList">
+  </div> 
+  <button style='display:none' onclick='loadMore();' type="button" class="btn btn-default" id='loadMore'>load more...</button>
+ <div id='hotList'>
+<h1>Hostest list</h1>
+ </div>
+
+<script src="Javascript/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="Javascript/echonest.js"> </script>
+<script type="text/javascript" src="Javascript/bootstrap.min.js"> </script>
+<script type="text/javascript" src="Javascript/artistList.js"></script>
+</body>
+
+
+
+</html>
+
+
+

@@ -83,16 +83,10 @@ Artist.prototype.blogs = function(artist_id, callback, error) {
     this.en.apiRequest('artist/blogs', {id:artist_id}, callback, error);
 }
 
-Artist.prototype.searchByName = function(name, callback, error) {
-    this.prototype.search({'name': name}, callback, error);
-}
-
-Artist.prototype.searchByStyle = function(style, callback, error) {
-    this.prototype.search({'style': style}, callback, error);
-}
-
-Artist.prototype.searchByMood = function(mood, callback, error) {
-    this.prototype.search({'mood': mood}, callback, error);
+Artist.prototype.hottest = function(callback, error) {
+    this.en.apiRequest('artist/top_hottt',
+            {'bucket': ['images', 'biographies']},
+            callback, error);
 }
 
 Artist.prototype.search = function(args, callback, error) {

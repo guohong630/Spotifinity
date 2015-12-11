@@ -1,5 +1,6 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
 var artist_id_spotify = '5l8VQNuIg0turYE1VtM9zV';
+var liked = false;
 
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
@@ -26,12 +27,54 @@ $(document).ready(function(){
       }
   	});
 
+	$.ajax({
+      type: "GET",
+      dataType: "json",
+      cache: false,
+      url: "https://api.spotify.com/v1/artists/"+artist_id_spotify+"/top-tracks?country=US",
+      success: function(data) {
+ 		console.log(data);
+ 		var trackArr = data.tracks;
+ 		var songs_uri = 'spotify:trackset:PREFEREDTITLE:';
+ 		for (var i = 0; i < 4 && i < trackArr.length; i++) {
+ 			var uri = trackArr[i].uri.split(':')[2];
+ 			if (i === 0) {
+ 				songs_uri = songs_uri + uri; 
+ 			} else {
+ 				songs_uri = songs_uri +','+ uri;
+ 			}
+ 		}
+
+ 		$('#playerButton').html(
+ 			'<iframe src="https://embed.spotify.com/?uri='
+ 			+songs_uri
+ 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
+ 			// +'<div id="follower">'
+ 			// +'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
+    //   		+artist_id_spotify
+    //   		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
+    //   		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
+ 		);
+      }
+  	});
+
 	searchBlogs(artist_id);
 
 	searchBiographies(artist_id);
     
 	searchNews(artist_id);
 
+	displayLikeStar(liked);
+
+	$('[data-toggle="popover"]').popover(); 
+
+	$('body').on('click', function (e) {
+        if ($(e.target).data('toggle') !== 'popover'
+            && $(e.target).parents('[data-toggle="popover"]').length === 0
+            && $(e.target).parents('.popover.in').length === 0) { 
+            $('[data-toggle="popover"]').popover('hide');
+        }
+    });
 });
 
 function searchBlogs (artist_id) {
@@ -110,7 +153,20 @@ function searchNews(artist_id) {
 	 );
 }
 
+function displayLikeStar(isLiked) {
+	if (isLiked) {
+		console.log('liked');
+		$('#star-five').html('<img src="images/1449708334_star.png" onclick="changeLikeState()">');
+	} else {
+		console.log('unliked');
+		$('#star-five').html('<img src="images/emptyStar1.png" onclick="changeLikeState()">');
+	}
+}
 
+function changeLikeState() {
+	liked = !liked;
+	displayLikeStar(liked);
+}
 
 function searchSimilarArtists() {
 	console.log('searchSimilarArtists');

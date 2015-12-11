@@ -1,0 +1,7 @@
+function showProfile(){
+	
+}
+
+function showArtist(){
+	
+}

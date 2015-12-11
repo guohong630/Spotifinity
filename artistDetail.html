@@ -11,12 +11,23 @@
 
   	</div>
     <div id="artist-bio"></div>
-  </div> 
+  </div>
+
+  <div id="playerButton">
+
+  </div>
+
+  <div class="like-artist">
+    <p id="likeLabel">Like This Artist</p>
+    <div id="star-five"></div>
+    <div id="help">
+      <a href="#" data-toggle="popover" data-container="body" title="Need Help?" data-content="Contact spotifinity@gmail.com"><img src="images/help.png" ></a></div> 
+  </div>  
 
   <div id="control">
-    <button class="btn btn-primary btn-success group-action" onclick="searchSimilarArtists()">Similar Artists</button>
-    <button class="btn btn-primary btn-success group-action" onclick="AddToProfile()">Add to Profile</button>
-    <button class="btn btn-primary btn-success group-action" onclick="AddToNew()">Add to New Profile</button>
+    <button class="btn btn-default active group-action" onclick="searchSimilarArtists()" id="control-button1">Similar Artists</button>
+    <button class="btn btn-default active group-action" onclick="AddToProfile()" id="control-button2">Add to Profile</button>
+    <button class="btn btn-default active group-action" onclick="AddToNew()" id="control-button3">Add to New Profile</button>
   </div>
 
   <div id="blogs"  padding-left="10%" padding-top="100px">

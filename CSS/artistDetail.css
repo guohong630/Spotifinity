@@ -3,18 +3,23 @@
 	top: 100px;
 	left: 300px;
 	width: 800px;
-	background-color: #ffd480;
-	height: 400px;
+	background-color: #282828;
+	height: 530px;
 }
 
 #artist-name {
 	position: relative;
 	left: 40px;
+	top: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #FFFAFA;
 }
 
 .artist-avatar {
 	position: relative;
 	left: 30px;
+	top: 30px;
     display: block;
     max-width:150px;
     max-height:230px;
@@ -24,7 +29,7 @@
 
 .news-section{
 	position: absolute;
-	top: 500px;
+	top: 630px;
 	left: 300px;
 	width: 800px;
 }
@@ -62,12 +67,14 @@
 	width: 570px;
 	left: 10px;
 	overflow: hidden;
+	color: #FFFAFA;
 }
 
 .ellipsis{
 	position: relative;
 	left: 10px;
 	top: -15px;
+	color: #FFFAFA;
 }
 
 #bio-link{
@@ -79,15 +86,15 @@
 #artist-bio{
 	position: relative;
 	left: 190px;
-	top: -90px;
+	top: -60px;
 	height: 90px;
 	width: 600px;
-	border: 1px solid black;
+	border: 1px solid #FFFAFA;
 }
 
 #blogs{
 	position: absolute;
-	top: 300px;
+	top: 400px;
 	left: 400px;
 	height: 190px;
 	width: 600px;
@@ -98,6 +105,57 @@
 	position: absolute;
 	width: 600px;
 	height: 50px;
-	left: 600px;
-	top: 250px;
+	left: 520px;
+	top: 280px;
+}
+
+#control-button2{
+	position: relative;
+	left: 30px;
+}
+
+#control-button3{
+	position: relative;
+	left: 60px;
+}
+
+#playerButton {
+	position: absolute;
+	left: 830px;
+	top: 100px;
+	width: 800px;
+	height: 80px;
+}
+
+#follower {
+	position: absolute;
+	left: 330px;
+	top: 10px;
+}
+
+#star-five {
+	position: relative;
+	height: 32px;
+	width: 32px;
+	left: 100px;
+	top: -30px;
+}
+
+#likeLabel {
+	position: relative;
+	top: 5px;
+	color: #FFFAFA;
+}
+
+.like-artist {
+	position: absolute;
+	left: 330px;
+	top: 280px;
+}
+
+#help {
+	position: relative;
+	width: 100px;
+	left: 150px;
+	top: -55px;
 }

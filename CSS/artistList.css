@@ -59,3 +59,12 @@
 	margin: 0 auto;
 	width: 80%;
 }
+
+.typeRadio {
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+.header {
+	text-align: center;
+}

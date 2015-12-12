@@ -1,10 +1,8 @@
 <!DOCTYPE html>
   <html>
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="CSS/bootstrap.min.css">
   <link href="CSS/font-awesome.min.css" rel="stylesheet">
   <link href="CSS/artistList.css" rel="stylesheet">
-  <!-- <link href="CSS/artistDetail.css" rel="stylesheet"> -->
 <body>
 	<div class="container row" id='searchBox'>
 	</br>
@@ -16,7 +14,7 @@
       <label class="control-label">By</label>
     </div>
     <div class="form-group">
-      <div class="radio">
+      <div class="radio typeRadio" style="margin-left: 8px;">
         <label class="radio-inline control-label">
           <input type="radio" id="name_id" name="by" value="0" checked="">
           Name
@@ -24,15 +22,15 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="radio">
+      <div class="radio typeRadio">
         <label class="radio-inline control-label">
-          <input type="radio" id="style_id" name="by" value="0" checked="">
+          <input type="radio" id="style_id" name="by" value="0">
           Style
         </label>
       </div>
     </div>
     <div class="form-group">
-      <div class="radio">
+      <div class="radio typeRadio">
         <label class="radio-inline control-label">
           <input type="radio" id="mood_id" name="by" value="1">
           Mood
@@ -51,7 +49,8 @@
   <button style='display:none' onclick='loadMore();' type="button" class="btn btn-default" id='loadMore'>load more...</button>
 
  <div id='hotList'>
-<h1>Hostest list</h1>
+<h1 class="header">Hotest list</h1>
+</br>
  </div>
 
 <script src="Javascript/jquery-2.1.1.min.js"></script>

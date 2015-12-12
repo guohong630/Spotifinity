@@ -11,6 +11,11 @@ Tasks
 * Heading and sidebar (Weixin)
 * Search (Lixin)
 * Artist detail (Hong)
+	- [x] Request the data
+	- [x] Finish the initial version of artist detail page 
+	- [x] Add play button function and Spotify widget 
+	- [ ] Hook up interaction with other pages
+	- [ ] Polish user interface
 * Taste profile (Xinyue)
 	- [x] Ajax requests to create, update, and get taste profiles
 	- [x] Create dynamic playlists, play/skip/pause songs, like/dislike songs. 

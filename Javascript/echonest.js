@@ -67,14 +67,31 @@ function Artist(en) {
 }
 
 
-Artist.prototype.biographies = function(args, callback, error) {
-    this.en.apiRequest('artist/biographies', args, callback, error);
+Artist.prototype.biographies = function(artist_id, callback, error) {
+    this.en.apiRequest('artist/biographies', {id:artist_id}, callback, error);
 }
 
 Artist.prototype.images = function(args, callback, error) {
     this.en.apiRequest('artist/images', args, callback, error);
 }
 
+Artist.prototype.news = function(args, callback, error) {
+    this.en.apiRequest('artist/news', {id:artist_id}, callback, error);
+}
+
+Artist.prototype.blogs = function(artist_id, callback, error) {
+    this.en.apiRequest('artist/blogs', {id:artist_id}, callback, error);
+}
+
+Artist.prototype.hottest = function(callback, error) {
+    this.en.apiRequest('artist/top_hottt',
+            {'bucket': ['images', 'biographies']},
+            callback, error);
+}
+
+Artist.prototype.search = function(args, callback, error) {
+    this.en.apiRequest('artist/search', args, callback, error);
+}
 
 function Playlist(en) {
     this.en = en;

@@ -194,28 +194,6 @@ Catalog.prototype.read = function(id, start, results, bucket, callback, error) {
     this.en.apiRequest('catalog/read', {id:id, start:start, results:results, bucket:bucket}, callback, error);
 };
 
-Catalog.prototype.pollForStatus = function(ticket, callback, error) {
-    var that = this;
-    var pollPeriod = 1000;
-
-    function poll() {
-        that.status(ticket, localCallback, error);
-    }
-
-    function localCallback(data) {
-        if (data.response.ticket_status === 'pending') {
-            callback(data);
-            setTimeout(poll, pollPeriod);
-        } else if (data.response.ticket_status === 'complete') {
-            callback(data);
-        } else {
-            error(data);
-        }
-    }
-
-    poll();
-};
-
 Catalog.prototype.profileByName = function(name, callback, error) {
     this.en.apiRequest('catalog/profile', {name:name},  callback, error);
 };

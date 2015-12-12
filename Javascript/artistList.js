@@ -12,7 +12,7 @@ function buildArtistBlock(name, url, bio) {
   name = name ? name : 'no name';
   bio = bio ? bio : 'no description';
   return '<div class=\'artistListBlock\'><p class=\'artistListName\'>' +
-          name + '</p><button onclick=\'alert(\'hello\');\' type=\'button\' class=\'btn btn-default artistListPlay\'>' +
+          name + '</p><button onclick=\"alert(\'hello\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
           'play the artist</button>' + '<div class=\'artistListImage\'>' +
           '<img src=\'' + url + '\' class=\'artistListAvatar\'></div>' +
           '<div class=\'artistListBio\'><p class=\'artistListBioText\'>' +

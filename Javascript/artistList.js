@@ -36,7 +36,7 @@ function search(query, type, isAppend) {
       if (artist.images[0])
         image_url = artist.images[0].url;
       if (artist.biographies[0])
-        bio = artist.biographies[0].text.substring(0, 200);
+        bio = artist.biographies[0].text.substring(0, 200) + '...';
       $('#artistList').append(buildArtistBlock(name, image_url, bio));
     });
     offset = offset + limit;
@@ -74,7 +74,7 @@ $(document).ready(function(){
   en.artist.hottest(function(data) {
     for (var i = 0; i < 5; i++) {
       var name = data.response.artists[i].name;
-      var bio = data.response.artists[i].biographies[0].text.substring(0, 200);
+      var bio = data.response.artists[i].biographies[0].text.substring(0, 200) + '...';
       var image_url = data.response.artists[i].images[0].url;
       $('#hotList').append(buildArtistBlock(name, image_url, bio));
     }

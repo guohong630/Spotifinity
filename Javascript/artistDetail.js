@@ -4,6 +4,11 @@ var liked = false;
 
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
+var catalogs = {
+	CAERBWP1518E24EDE3: 'British Pop Profile',
+	whgedjwe: 'wedewd'
+};
+
 function getSource(url) {
 	var path = url.split('/');
 	return path[2]	;
@@ -173,11 +178,19 @@ function searchSimilarArtists() {
 }
 
 function AddToProfile() {
-	console.log('AddToProfile');
+	$('#profileList').empty();
+	for (var cata in catalogs) {
+		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ catalogs[cata]+'">'+catalogs[cata]+'</label></div>');
+	}
 }
 
 function AddToNew(){
 	console.log('AddToNew');
+}
+
+function addToCatalog(){
+	var selected_value = $('input[name=optradio]:checked').val();
+	console.log(selected_value);
 }
 
 

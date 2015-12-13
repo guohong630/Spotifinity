@@ -9,7 +9,6 @@ var catalogs = {
 };
 
 var curSong = null;
-
 var currentCatalogID = "CAERBWP1518E24EDE3";
 var allItems = [];
 

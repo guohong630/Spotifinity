@@ -1,7 +1,8 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
-var artist_id_spotify = '5l8VQNuIg0turYE1VtM9zV';
+var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
+var artist_id_spotify = 'AR7J9AP1187FB5BD64';
 var liked = false;
-
+var artist_name="adele";
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
 var catalogs = {
@@ -14,54 +15,87 @@ function getSource(url) {
 	return path[2]	;
 }
 
-$(document).ready(function(){
+// $(document).ready(
+// 	getArtistDetail(artist_id_spotify_test);
+// );
+
+// $(document).ready(function() 
+function getArtistDetail(name, artist_id_spotify) {	
+	console.log('test integrate', artist_id_spotify);
+	$('#searchBox').hide();
+	$('#artistList').hide();
+	$('#hotList').hide();
+	$('#likeLabel').show();
+  	$('#control').show();
+  	$('#blogs').show();
+  	$('#help').show();
+  	$('.artist-block').show();
+  	$('#star-five').show();
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
-
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      cache: false,
-      url: "https://api.spotify.com/v1/artists/"+artist_id_spotify,
-      success: function(data) {
-      	console.log(data);
-        var artist_name = data.name;
-        var image_url = data.images[2].url;
-        document.getElementById('artist-name').innerHTML = artist_name;
-        $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
-      }
-  	});
 
 	$.ajax({
       type: "GET",
       dataType: "json",
       cache: false,
-      url: "https://api.spotify.com/v1/artists/"+artist_id_spotify+"/top-tracks?country=US",
+      url: "https://api.spotify.com/v1/search?q="+name+"&type=artist",
       success: function(data) {
- 		console.log(data);
- 		var trackArr = data.tracks;
- 		var songs_uri = 'spotify:trackset:PREFEREDTITLE:';
- 		for (var i = 0; i < 4 && i < trackArr.length; i++) {
- 			var uri = trackArr[i].uri.split(':')[2];
- 			if (i === 0) {
- 				songs_uri = songs_uri + uri; 
- 			} else {
- 				songs_uri = songs_uri +','+ uri;
- 			}
- 		}
+      	console.log('artists name', data);
+      	artist_id_spotify = data.artists.items[0].id;
+      	var image_url = data.artists.items[0].images[2].url;
+        document.getElementById('artist-name').innerHTML = name;
+        $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
+        $.ajax({
+	      type: "GET",
+	      dataType: "json",
+	      cache: false,
+	      url: "https://api.spotify.com/v1/artists/"+artist_id_spotify+"/top-tracks?country=US",
+	      success: function(data) {
+	 		console.log('top-tracks', data);
+	 		var trackArr = data.tracks;
+	 		var songs_uri = 'spotify:trackset:PREFEREDTITLE:';
+	 		for (var i = 0; i < 4 && i < trackArr.length; i++) {
+	 			var uri = trackArr[i].uri.split(':')[2];
+	 			if (i === 0) {
+	 				songs_uri = songs_uri + uri; 
+	 			} else {
+	 				songs_uri = songs_uri +','+ uri;
+	 			}
+	 		}
 
- 		$('#playerButton').html(
- 			'<iframe src="https://embed.spotify.com/?uri='
- 			+songs_uri
- 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
- 			// +'<div id="follower">'
- 			// +'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
-    //   		+artist_id_spotify
-    //   		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
-    //   		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
- 		);
+	 		$('#playerButton').html(
+	 			'<iframe src="https://embed.spotify.com/?uri='
+	 			+songs_uri
+	 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
+	 			// +'<div id="follower">'
+	 			// +'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
+	    //   		+artist_id_spotify
+	    //   		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
+	    //   		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
+	 		);
+	      }
+	  	});
       }
   	});
+
+   //  $.ajax({
+   //    type: "GET",
+   //    dataType: "json",
+   //    cache: false,
+   //    url: "https://api.spotify.com/v1/artists/"+artist_id_spotify,
+   //    success: function(data) {
+   //    	console.log('artists', data);
+   //    	current_artist_name = artist_name;
+   //      var artist_name = data.name;
+   //      var image_url = data.images[2].url;
+   //      document.getElementById('artist-name').innerHTML = artist_name;
+   //      $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
+   //    }
+  	// });
+	console.log('artist_id_spotify', artist_id_spotify);
+	
+	
+	artist_id = artist_id_spotify;
 
 	searchBlogs(artist_id);
 
@@ -80,13 +114,14 @@ $(document).ready(function(){
             $('[data-toggle="popover"]').popover('hide');
         }
     });
-});
+}
+// );
 
 function searchBlogs (artist_id) {
 	 en.artist.blogs(
 	 	artist_id, 
 	 	function(data) {
-      		console.log(data);
+      		console.log('blogs',data);
 	      	var blogarr = data.response.blogs;
 	      	for (var i = 0; i < 4; i++) {
 	      		$('#blog' + i).html(
@@ -106,7 +141,7 @@ function searchBiographies (artist_id) {
 	en.artist.biographies(
 		artist_id,
 		function (data) {
-			console.log(data);
+			console.log('bio', data);
 			var bioarr = data.response.biographies;
 			var bio_text;
 			var bio_url;
@@ -136,7 +171,7 @@ function searchNews(artist_id) {
 	en.artist.news(
 	 	artist_id, 
 	 	function(data) {
-	      	console.log(data);
+	      	console.log('news',data);
 	      	var news = data.response.news;
 	      	$('news-section').empty();
 	      	for (var i = 0; i < 9; i++) {
@@ -180,7 +215,7 @@ function searchSimilarArtists() {
 function AddToProfile() {
 	$('#profileList').empty();
 	for (var cata in catalogs) {
-		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ catalogs[cata]+'">'+catalogs[cata]+'</label></div>');
+		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ cata+'">'+catalogs[cata]+'</label></div>');
 	}
 }
 
@@ -190,7 +225,7 @@ function AddToNew(){
 
 function addToCatalog(){
 	var selected_value = $('input[name=optradio]:checked').val();
-	console.log(selected_value);
+	updateTasteProfileInArtistPage(selected_value, current_artist_name);
 }
 
 

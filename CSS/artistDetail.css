@@ -4,13 +4,13 @@
 	left: 300px;
 	width: 800px;
 	background-color: #282828;
-	height: 530px;
+	height: 480px;
 }
 
 #artist-name {
 	position: relative;
 	left: 40px;
-	top: 20px;
+	top: 15px;
 	font-size: 22px;
 	font-weight: bold;
 	color: #FFFAFA;
@@ -19,17 +19,17 @@
 .artist-avatar {
 	position: relative;
 	left: 30px;
-	top: 30px;
+	top: 10px;
     display: block;
-    max-width:150px;
-    max-height:230px;
+    max-width:130px;
+    max-height:130px;
     width: auto;
     height: auto;
 }
 
 .news-section{
 	position: absolute;
-	top: 630px;
+	top: 580px;
 	left: 300px;
 	width: 800px;
 }
@@ -53,6 +53,7 @@
 	width: 750px;
 	left: 25px;
 	height: 100px;
+	overflow: hidden;
 }
 
 .news-link{
@@ -86,7 +87,8 @@
 #artist-bio{
 	position: relative;
 	left: 190px;
-	top: -60px;
+	/*top: 70px;*/
+	top: -90px;
 	height: 90px;
 	width: 600px;
 	border: 1px solid #FFFAFA;
@@ -94,9 +96,9 @@
 
 #blogs{
 	position: absolute;
-	top: 400px;
+	top: 350px;
 	left: 400px;
-	height: 190px;
+	height: 185px;
 	width: 600px;
 	background-color: #DCE1E3;
 }
@@ -158,4 +160,12 @@
 	width: 100px;
 	left: 150px;
 	top: -55px;
+}
+
+.blog-title {
+	width: 100%;
+	max-width:500px;
+	max-height: 20px;
+	overflow: hidden;
+  	text-overflow: ellipsis;
 }

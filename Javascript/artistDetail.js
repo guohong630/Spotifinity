@@ -20,8 +20,7 @@ function getSource(url) {
 // );
 
 // $(document).ready(function() 
-function getArtistDetail(artist_id_spotify，name) 
-{
+function getArtistDetail(name, artist_id_spotify) {	
 	console.log('test integrate', artist_id_spotify);
 	$('#searchBox').hide();
 	$('#artistList').hide();
@@ -44,7 +43,7 @@ function getArtistDetail(artist_id_spotify，name)
       	console.log('artists name', data);
       	artist_id_spotify = data.artists.items[0].id;
       	var image_url = data.artists.items[0].images[2].url;
-        document.getElementById('artist-name').innerHTML = artist_name;
+        document.getElementById('artist-name').innerHTML = name;
         $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
         $.ajax({
 	      type: "GET",
@@ -124,7 +123,7 @@ function searchBlogs (artist_id) {
 	 	function(data) {
       		console.log('blogs',data);
 	      	var blogarr = data.response.blogs;
-	      	for (var i = 0; i < 3; i++) {
+	      	for (var i = 0; i < 4; i++) {
 	      		$('#blog' + i).html(
 	      			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
 	      			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'

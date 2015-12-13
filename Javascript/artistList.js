@@ -8,11 +8,16 @@ var limit = 10;
 var query;
 var type;
 
+// function test(a, b) {
+//   alert(a);
+//   alert(b);
+// }
+
 function buildArtistBlock(name, url, bio, id) {
   name = name ? name : 'no name';
   bio = bio ? bio : 'no description';
   return '<div class=\'artistListBlock\'><p class=\'artistListName\'>' +
-          name + '</p><button onclick=\"getArtistDetail(\'' + id + '\', '+ name +');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
+          name + '</p><button onclick=\"getArtistDetail(\'' + name + '\', \'' + id + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
           'play the artist</button>' + '<div class=\'artistListImage\'>' +
           '<img src=\'' + url + '\' class=\'artistListAvatar\'></div>' +
           '<div class=\'artistListBio\'><p class=\'artistListBioText\'>' +

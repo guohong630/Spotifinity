@@ -161,3 +161,11 @@
 	left: 150px;
 	top: -55px;
 }
+
+.blog-title {
+	width: 100%;
+	max-width:500px;
+	max-height: 20px;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}

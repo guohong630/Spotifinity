@@ -8,11 +8,11 @@ var limit = 10;
 var query;
 var type;
 
-function buildArtistBlock(name, url, bio) {
+function buildArtistBlock(name, url, bio, id) {
   name = name ? name : 'no name';
   bio = bio ? bio : 'no description';
   return '<div class=\'artistListBlock\'><p class=\'artistListName\'>' +
-          name + '</p><button onclick=\"alert(\'hello\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
+          name + '</p><button onclick=\"alert(\'' + id + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
           'play the artist</button>' + '<div class=\'artistListImage\'>' +
           '<img src=\'' + url + '\' class=\'artistListAvatar\'></div>' +
           '<div class=\'artistListBio\'><p class=\'artistListBioText\'>' +
@@ -28,11 +28,12 @@ function search(query, type, isAppend) {
   args[type] = query;
   en.artist.search(args, function(data) {
     if (!isAppend)
-      $('#artistList').html('<h1 class=\'header\'>search result for ' + query + '</h1>');
+      $('#artistList').html('<h2 class=\'header\'>search result for ' + query + '</h2>');
     data.response.artists.forEach(function(artist, index) {
       var name = artist.name;
       var image_url = null;
       var bio = null;
+      var id = artist.id;
       if (artist.images[0])
         image_url = artist.images[0].url;
       if (artist.biographies[0]) {
@@ -40,7 +41,7 @@ function search(query, type, isAppend) {
         if (bio.length > 200)
           bio = bio.substring(0, 200) + '...';
       }
-      $('#artistList').append(buildArtistBlock(name, image_url, bio));
+      $('#artistList').append(buildArtistBlock(name, image_url, bio, id));
     });
     offset = offset + limit;
 
@@ -53,6 +54,7 @@ function search(query, type, isAppend) {
 function searchArtist() {
   offset = 0;
   $('#loadMore').css('display', 'block');
+  $('#hotList').css('display', 'none');
   query = $('#searchInput').val();
   var isName = document.getElementById("name_id").checked;
   var isStyle = document.getElementById("style_id").checked;
@@ -77,11 +79,12 @@ $(document).ready(function(){
   en.artist.hottest(function(data) {
     for (var i = 0; i < 5; i++) {
       var name = data.response.artists[i].name;
+      var id = data.response.artists[i].id;
       var bio = data.response.artists[i].biographies[0].text;
       if (bio.length > 200)
         bio = bio.substring(0, 200) + '...';
       var image_url = data.response.artists[i].images[0].url;
-      $('#hotList').append(buildArtistBlock(name, image_url, bio));
+      $('#hotList').append(buildArtistBlock(name, image_url, bio, id));
     }
     
   },

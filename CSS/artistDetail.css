@@ -4,7 +4,7 @@
 	left: 300px;
 	width: 800px;
 	background-color: #282828;
-	height: 530px;
+	height: 480px;
 }
 
 #artist-name {
@@ -29,7 +29,7 @@
 
 .news-section{
 	position: absolute;
-	top: 630px;
+	top: 580px;
 	left: 300px;
 	width: 800px;
 }
@@ -94,9 +94,9 @@
 
 #blogs{
 	position: absolute;
-	top: 400px;
+	top: 350px;
 	left: 400px;
-	height: 190px;
+	height: 185px;
 	width: 600px;
 	background-color: #DCE1E3;
 }

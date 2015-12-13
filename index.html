@@ -14,9 +14,13 @@
 <!-- Custom CSS -->
 <link href="CSS/simple-sidebar.css" rel="stylesheet">
 
+<script src="Javascript/showList.js" type="text/javascript"></script>
+<link href="CSS/font-awesome.min.css" rel="stylesheet">
 <link href="CSS/artistList.css" rel="stylesheet">
+<link href="CSS/artistDetail.css" rel="stylesheet">
 
 <title>Spotifinity</title>
+
 
 </head>
 
@@ -27,17 +31,28 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul id="side_bar" class="sidebar-nav">
-				<li class="sidebar-brand"><a href="javascript:showAllGroup();">
-						Personalized Profiles</a></li>
-
-				<li class="sidebar-brand"><a href="javascript:showAllGroup();">
-						Stared Artists</a></li>
+				<li id='profile_list' class="sidebar-brand">
+						Personalized Profiles
+				</li>
 			</ul>
+
+			<ul id="side_bar2" class="sidebar-nav">
+				<li class="sidebar-brand">
+						Stared Artists
+				</li>
+			</ul>
+
+<!-- 			<ul id="side_bar3" class="sidebar-nav"> 
+				<button type="button" class="btn btn-secondary"
+						onclick="showProfile();">Show Artist
+				</button>
+			</ul> -->
 
 		</div>
 		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
+		<div id="searchArtistBlock">
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
@@ -97,12 +112,14 @@
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
 							Menu</a>
 
-						<div id='new_group'></div>
+						<div id="result"></div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 
 
@@ -112,6 +129,67 @@
 			href="https://developer.spotify.com/web-api/">Spotify</a>.
 		</small>
 	</div>
+
+
+
+  <div class="artist-block">
+	  <p id="artist-name"></p>
+  	<div id="artist-image">
+
+  	</div>
+    <div id="artist-bio"></div>
+  </div>
+
+  <div id="playerButton">
+
+  </div>
+
+  <div class="like-artist">
+    <p id="likeLabel">Like This Artist</p>
+    <div id="star-five"></div>
+    <div id="help">
+      <a href="#" data-toggle="popover" data-container="body" title="Need Help?" data-content="Contact spotifinity@gmail.com"><img src="images/help.png" ></a></div> 
+  </div>  
+
+  <div id="control">
+    <button class="btn btn-default active group-action" onclick="searchSimilarArtists()" id="control-button1" >Similar Artists</button>
+    <button class="btn btn-default active group-action" onclick="AddToProfile()" id="control-button2" data-toggle="modal" data-target="#update-tp-modal">Add to Profile</button>
+    <button class="btn btn-default active group-action" onclick="AddToNew()" id="control-button3" data-toggle="modal" data-target="#create-tp-modal">Add to New Profile</button>
+  </div>
+
+  <div id="blogs"  padding-left="10%" padding-top="100px">
+    <table class="table table-hover" id="blog_list">
+      <tbody>
+        <tr id='blog0'>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="news-section">
+    
+  </div> 
+
+
+<!-- Create new profile modal -->
+<div class="modal fade" id="update-tp-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Update Profile</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" id="profileList"></form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-no-border" data-dismiss="modal" id="update-tp-button" onclick="addToCatalog()">UPDATE</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 	<script>
     $("#menu-toggle").click(function(e) {
@@ -124,10 +202,12 @@
  		var groupHeight = $("#side_bar").height();
     	console.log(document.getElementById('side_bar2'))
 		$("#side_bar2").css("margin-top",  20+groupHeight );
-    </script>
+    </script>   
 <script type="text/javascript" src="Javascript/echonest.js"> </script>
 <script type="text/javascript" src="Javascript/bootstrap.min.js"> </script>
 <script type="text/javascript" src="Javascript/artistList.js"></script>
+<script src="Javascript/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="Javascript/artistDetail.js"></script>
 </body>
 
 </html>

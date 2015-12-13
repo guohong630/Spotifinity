@@ -49,6 +49,13 @@ function showProfile() {
 			addedCatalogs[key] = profile;
 		}
 	}
+	for (var key in addedCatalogs){
+		if (catalogs[key] == null){
+			side_bar.removeChild(document.getElementById("list_profile_" + key));
+			delete addedCatalogs[key];
+		}
+	}
+	
 	localStorage.setItem("addedProfile", JSON.stringify(addedCatalogs));
 	updateDistance();
 }
@@ -80,6 +87,13 @@ function showArtist(){
 			li.appendChild(a);
 			side_bar.appendChild(li);
 			addedArtist[key] = artist;
+		}
+	}
+
+	for (var key in addedArtist){
+		if (staredArtist[key] == null){
+			side_bar.removeChild(document.getElementById("list_artist_" + key));
+			delete addedArtist[key];
 		}
 	}
 	localStorage.setItem("addedArtist", JSON.stringify(addedArtist));

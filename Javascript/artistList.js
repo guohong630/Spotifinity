@@ -8,11 +8,11 @@ var limit = 10;
 var query;
 var type;
 
-function buildArtistBlock(name, url, bio, id) {
+function buildArtistBlock(name, url, bio) {
   name = name ? name : 'no name';
   bio = bio ? bio : 'no description';
   return '<div class=\'artistListBlock\'><p class=\'artistListName\'>' +
-          name + '</p><button onclick=\"alert(\'' + id + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
+          name + '</p><button onclick=\"alert(\'' + name + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
           'play the artist</button>' + '<div class=\'artistListImage\'>' +
           '<img src=\'' + url + '\' class=\'artistListAvatar\'></div>' +
           '<div class=\'artistListBio\'><p class=\'artistListBioText\'>' +
@@ -41,7 +41,7 @@ function search(query, type, isAppend) {
         if (bio.length > 200)
           bio = bio.substring(0, 200) + '...';
       }
-      $('#artistList').append(buildArtistBlock(name, image_url, bio, id));
+      $('#artistList').append(buildArtistBlock(name, image_url, bio));
     });
     offset = offset + limit;
 
@@ -84,7 +84,7 @@ $(document).ready(function(){
       if (bio.length > 200)
         bio = bio.substring(0, 200) + '...';
       var image_url = data.response.artists[i].images[0].url;
-      $('#hotList').append(buildArtistBlock(name, image_url, bio, id));
+      $('#hotList').append(buildArtistBlock(name, image_url, bio));
     }
     
   },

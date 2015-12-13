@@ -5,6 +5,14 @@ var liked = false;
 var artist_name="adele";
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
+var artist = {
+	"123" : "celia",
+	"234" : "weixin"
+}
+
+
+localStorage.setItem("staredArtist", JSON.stringify(artist));
+
 var catalogs = {
 	CAERBWP1518E24EDE3: 'British Pop Profile',
 	whgedjwe: 'wedewd'
@@ -103,7 +111,7 @@ function getArtistDetail(name, artist_id_spotify) {
     
 	searchNews(artist_id);
 
-	displayLikeStar(liked);
+	displayLikeStar(name, artist_id_spotify);
 
 	$('[data-toggle="popover"]').popover(); 
 
@@ -193,19 +201,39 @@ function searchNews(artist_id) {
 	 );
 }
 
-function displayLikeStar(isLiked) {
-	if (isLiked) {
+function displayLikeStar(name, artist_id_spotify) {
+	if (liked) {
 		console.log('liked');
-		$('#star-five').html('<img src="images/1449708334_star.png" onclick="changeLikeState()">');
+		$('#star-five').html('<img src="images/1449708334_star.png" onclick="changeLikeState(\'' + artist_id_spotify + '\', \'' + name + '\')">');
 	} else {
 		console.log('unliked');
-		$('#star-five').html('<img src="images/emptyStar1.png" onclick="changeLikeState()">');
+		$('#star-five').html('<img src="images/emptyStar1.png" onclick="changeLikeState(\'' + artist_id_spotify + '\', \'' + name + '\')">');
 	}
 }
 
-function changeLikeState() {
+function changeLikeState(artist_id, name) {
+	console.log(name, artist_id, liked);
+	if (liked) {
+		var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
+		for (var artist in starredArtists) {
+			console.log(artist);
+			if (artist === artist_id) {
+				delete starredArtists[artist];
+			}
+		}
+		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));
+		console.log(localStorage.getItem("staredArtist"));
+	} else {
+		var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
+		console.log(starredArtists);
+		starredArtists[artist_id] = name;
+		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));
+		console.log(localStorage.getItem("staredArtist"));
+	}
 	liked = !liked;
-	displayLikeStar(liked);
+	console.log('after change',liked);
+	displayLikeStar(name, artist_id_spotify);
+	showArtist();
 }
 
 function searchSimilarArtists() {

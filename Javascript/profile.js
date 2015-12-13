@@ -8,7 +8,6 @@ var catalogs = {
 	CAERBWP1518E24EDE3: 'British Pop Profile'
 };
 
-
 var curSong = null;
 
 var currentCatalogID = "CAERBWP1518E24EDE3";
@@ -42,6 +41,23 @@ function terror(s) {
 
 
 // -------------------------------------- Fetching player info of taste profile ------------------------------------
+function updateTasteProfileInArtistPage (catalogID, artistName) {
+	var blocks = [];
+	var artist = $.trim(artistName);
+	var item = {
+		action: 'update',
+		item: {
+			item_id : 'item-1',
+			artist_name: artist,
+			favorite : true
+		}
+	};
+	blocks.push(item);
+	en.catalog.addArtists(catalogID, blocks, function(data) {
+	}, function(data) {
+		error("Trouble waiting for catalog");
+	});
+}
 
 function getArtistUpdateBlock(type) {
     var artists = $("#"+type).val();

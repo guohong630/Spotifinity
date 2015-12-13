@@ -14,8 +14,9 @@
 <!-- Custom CSS -->
 <link href="CSS/simple-sidebar.css" rel="stylesheet">
 
-
+<script src="Javascript/showList.js" type="text/javascript"></script>
 <title>Spotifinity</title>
+
 
 </head>
 
@@ -26,11 +27,20 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul id="side_bar" class="sidebar-nav">
-				<li class="sidebar-brand"><a href="javascript:showAllGroup();">
-						Personalized Profiles</a></li>
+				<li id='profile_list' class="sidebar-brand"><a href="javascript:showAllGroup();">
+						Personalized Profiles</a>
+				</li>
+			</ul>
 
+			<ul id="side_bar2" class="sidebar-nav">
 				<li class="sidebar-brand"><a href="javascript:showAllGroup();">
-						Stared Artists</a></li>
+						Stared Artists</a>
+				</li>
+			</ul>
+
+			<ul id="side_bar3" class="sidebar-nav"> 
+				<button type="button" class="btn btn-secondary"
+						onclick="showProfile();">Show Profile</button>
 			</ul>
 
 		</div>
@@ -50,7 +60,8 @@
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
 							Menu</a>
 
-						<div id='new_group'></div>
+						<div id="result"></div>
+
 					</div>
 				</div>
 			</div>

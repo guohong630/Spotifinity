@@ -18,7 +18,11 @@ function getSource(url) {
 // 	getArtistDetail(artist_id_spotify_test);
 // );
 
+// $(document).ready(function() 
 function getArtistDetail(artist_id_spotify) {
+	$('#searchBox').hide();
+	$('#artistList').hide();
+	$('#hotList').hide();
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
 
@@ -87,7 +91,7 @@ function getArtistDetail(artist_id_spotify) {
             $('[data-toggle="popover"]').popover('hide');
         }
     });
-});
+}
 
 function searchBlogs (artist_id) {
 	 en.artist.blogs(

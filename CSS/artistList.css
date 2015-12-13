@@ -1,0 +1,70 @@
+.artistListBlock {
+	position: relative;
+	/*width: 800px;*/
+	height: 200px;
+	/*left: 10%;*/
+	width: 50%;
+    margin: 0 auto;
+	background-color: #282828;
+}
+
+.artistListName {
+	position: relative;
+	left: 40px;
+	top: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #FFFAFA;
+}
+
+.artistListImage {
+
+}
+
+.artistListBio {
+	position: relative;
+    height: 100px;
+    width: 57%;
+    left: 40%;
+    top: -100px;
+    border: 1px solid #FFFAFA;
+}
+
+.artistListBioText {
+	overflow: hidden;
+	color: #FFFAFA;
+}
+
+.artistListPlay {
+    top: -20px;
+    left: 80%;
+    position: relative;
+    background-color: #6CD486;
+    border: none;
+}
+
+.artistListAvatar {
+	position: relative;
+	left: 40px;
+    display: block;
+    width: 150px;
+    height: 100px;
+}
+
+#loadMore {
+	margin: 0 auto;
+	width: 50%;
+}
+#searchBox {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.typeRadio {
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+.header {
+	text-align: center;
+}

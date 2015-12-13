@@ -17,12 +17,12 @@ var addedArtist = {
 
 localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
 
-var artist = {
-	"123" : "celia",
-	"234" : "weixin"
-}
+// var artist = {
+// 	"123" : "celia",
+// 	"234" : "weixin"
+// }
 
-localStorage.setItem("staredArtist", JSON.stringify(artist));
+// localStorage.setItem("staredArtist", JSON.stringify(artist));
 
 
 
@@ -55,14 +55,14 @@ function showProfile() {
 			delete addedCatalogs[key];
 		}
 	}
-	
+
 	localStorage.setItem("addedProfile", JSON.stringify(addedCatalogs));
+	localStorage.setItem("profiles", JSON.stringify(catalogs));
 	updateDistance();
 }
 
 function updateDistance() {
 	var groupHeight = $("#side_bar").height();
-	console.log(document.getElementById('side_bar2'))
 	$("#side_bar2").css("margin-top", 20 + groupHeight);
 }
 
@@ -73,10 +73,8 @@ function showArtist(){
 	var addedArtist = JSON.parse(addedObject);
 
 	var side_bar = document.getElementById("side_bar2");
-	console.log(side_bar)
 	for (var key in staredArtist){
 		if (addedArtist[key] == null) {
-			console.log(key) 
 			var li = document.createElement("li");
 			li.setAttribute("id", "list_artist_" + key);
 			var artist = staredArtist[key];
@@ -92,9 +90,13 @@ function showArtist(){
 
 	for (var key in addedArtist){
 		if (staredArtist[key] == null){
+
 			side_bar.removeChild(document.getElementById("list_artist_" + key));
 			delete addedArtist[key];
 		}
 	}
+	localStorage.setItem("staredArtist", JSON.stringify(staredArtist));
 	localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
+	console.log("added artist: " + localStorage.getItem("addedArtist"))
+	console.log("stared artist: " + localStorage.getItem("staredArtist"))
 }

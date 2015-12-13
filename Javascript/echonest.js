@@ -83,16 +83,10 @@ Artist.prototype.blogs = function(artist_id, callback, error) {
     this.en.apiRequest('artist/blogs', {id:artist_id}, callback, error);
 }
 
-Artist.prototype.searchByName = function(name, callback, error) {
-    this.prototype.search({'name': name}, callback, error);
-}
-
-Artist.prototype.searchByStyle = function(style, callback, error) {
-    this.prototype.search({'style': style}, callback, error);
-}
-
-Artist.prototype.searchByMood = function(mood, callback, error) {
-    this.prototype.search({'mood': mood}, callback, error);
+Artist.prototype.hottest = function(callback, error) {
+    this.en.apiRequest('artist/top_hottt',
+            {'bucket': ['images', 'biographies']},
+            callback, error);
 }
 
 Artist.prototype.search = function(args, callback, error) {
@@ -198,28 +192,6 @@ Catalog.prototype.status = function(ticket, callback, error) {
 
 Catalog.prototype.read = function(id, start, results, bucket, callback, error) {
     this.en.apiRequest('catalog/read', {id:id, start:start, results:results, bucket:bucket}, callback, error);
-};
-
-Catalog.prototype.pollForStatus = function(ticket, callback, error) {
-    var that = this;
-    var pollPeriod = 1000;
-
-    function poll() {
-        that.status(ticket, localCallback, error);
-    }
-
-    function localCallback(data) {
-        if (data.response.ticket_status === 'pending') {
-            callback(data);
-            setTimeout(poll, pollPeriod);
-        } else if (data.response.ticket_status === 'complete') {
-            callback(data);
-        } else {
-            error(data);
-        }
-    }
-
-    poll();
 };
 
 Catalog.prototype.profileByName = function(name, callback, error) {

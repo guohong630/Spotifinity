@@ -3,9 +3,11 @@ var CONSUMER_KEY = '3a29732f217fbcdcf6b37f956cd99925';
 var SHARED_SECRET = '6hLGAOJdTSSQY22z/uK0/A';
 
 var en;
+
 var catalogs = {
 	CAERBWP1518E24EDE3: 'British Pop Profile'
 };
+
 
 var curSong = null;
 
@@ -78,6 +80,7 @@ function createTasteProfile() {
 		en.catalog.create(profileName, function(data){
 			var profileID = data.response.id;
 			catalogs[profileID] = profileName;
+			localStorage.setItem('profiles', JSON.stringify(catalogs));
 			console.log(catalogs);
 			updateTasteProfile(profileID, blocks);
 		}, function(data) {
@@ -353,12 +356,12 @@ $(document).ready(function(){
 
             R.player.on("change:playState", function(state) {
                 if (state == R.player.PLAYSTATE_PAUSED) {
-                    $("#rp-pause-play i").removeClass("icon-pause");
-                    $("#rp-pause-play i").addClass("icon-play");
+                    $("#rp-pause-play i").removeClass("fa-pause");
+                    $("#rp-pause-play i").addClass("fa-play");
                 }
                 if (state == R.player.PLAYSTATE_PLAYING) {
-                    $("#rp-pause-play i").removeClass("icon-play");
-                    $("#rp-pause-play i").addClass("icon-pause");
+                    $("#rp-pause-play i").removeClass("fa-play");
+                    $("#rp-pause-play i").addClass("fa-pause");
                 }
             });
 

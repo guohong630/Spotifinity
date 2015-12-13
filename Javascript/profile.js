@@ -8,9 +8,7 @@ var catalogs = {
 	CAERBWP1518E24EDE3: 'British Pop Profile'
 };
 
-
 var curSong = null;
-
 var currentCatalogID = "CAERBWP1518E24EDE3";
 var allItems = [];
 

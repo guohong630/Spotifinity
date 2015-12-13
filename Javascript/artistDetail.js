@@ -1,7 +1,7 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
-var artist_id_spotify = '5l8VQNuIg0turYE1VtM9zV';
+var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
 var liked = false;
-
+var current_artist_name;
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
 var catalogs = {
@@ -14,7 +14,11 @@ function getSource(url) {
 	return path[2]	;
 }
 
-$(document).ready(function(){
+// $(document).ready(
+// 	getArtistDetail(artist_id_spotify_test);
+// );
+
+function getArtistDetail(artist_id_spotify) {
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
 
@@ -25,6 +29,7 @@ $(document).ready(function(){
       url: "https://api.spotify.com/v1/artists/"+artist_id_spotify,
       success: function(data) {
       	console.log(data);
+      	current_artist_name = artist_name;
         var artist_name = data.name;
         var image_url = data.images[2].url;
         document.getElementById('artist-name').innerHTML = artist_name;
@@ -62,6 +67,8 @@ $(document).ready(function(){
  		);
       }
   	});
+	
+	artist_id = "spotify:artist:" + artist_id_spotify;
 
 	searchBlogs(artist_id);
 
@@ -88,7 +95,7 @@ function searchBlogs (artist_id) {
 	 	function(data) {
       		console.log(data);
 	      	var blogarr = data.response.blogs;
-	      	for (var i = 0; i < 4; i++) {
+	      	for (var i = 0; i < 3; i++) {
 	      		$('#blog' + i).html(
 	      			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
 	      			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
@@ -180,7 +187,7 @@ function searchSimilarArtists() {
 function AddToProfile() {
 	$('#profileList').empty();
 	for (var cata in catalogs) {
-		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ catalogs[cata]+'">'+catalogs[cata]+'</label></div>');
+		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ cata+'">'+catalogs[cata]+'</label></div>');
 	}
 }
 
@@ -190,7 +197,7 @@ function AddToNew(){
 
 function addToCatalog(){
 	var selected_value = $('input[name=optradio]:checked').val();
-	console.log(selected_value);
+	updateTasteProfileInArtistPage(selected_value, current_artist_name);
 }
 
 

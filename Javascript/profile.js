@@ -99,6 +99,7 @@ function createTasteProfile() {
 			localStorage.setItem('profiles', JSON.stringify(catalogs));
 			console.log(catalogs);
 			updateTasteProfile(profileID, blocks);
+			showProfile();
 		}, function(data) {
                 error("Couldn't create catalog " + profileName);
             });
@@ -217,6 +218,63 @@ function goodSong() {
 function startPlaying() {
 
     createDynamicPlaylist();
+}
+
+function showTasteProfile(id, name) {
+	currentCatalogID = id;
+
+	$('#bad-song').click(badSong);
+    $('#good-song').click(goodSong);
+
+    $('#create-tp-button').click(createTasteProfile);
+
+    $('#update-tp-button').click(function(){
+    	var blocks = getArtistUpdateBlock("update-artist-name");
+    	if (blocks.length == 0) {
+			alert("Please enter artist name to update taste profiles...");
+		} else {
+			updateTasteProfile(currentCatalogID, blocks);
+		}
+    });
+
+    initUI();
+
+	R.ready(function() {
+            R.player.on("change:playingTrack", function(track) {
+                if (track) {
+                    var image = track.attributes.icon;
+                    $("#rp-album-art").attr('src', image);
+                } else {
+                    playNextSong();
+                }
+            });
+
+            R.player.on("change:playState", function(state) {
+                if (state == R.player.PLAYSTATE_PAUSED) {
+                    $("#rp-pause-play i").removeClass("fa-pause");
+                    $("#rp-pause-play i").addClass("fa-play");
+                }
+                if (state == R.player.PLAYSTATE_PLAYING) {
+                    $("#rp-pause-play i").removeClass("fa-play");
+                    $("#rp-pause-play i").addClass("fa-pause");
+                }
+            });
+
+            R.player.on("change:playingSource", function(track) {});
+
+            $("#rp-pause-play").click(function() {
+                R.player.togglePause();
+            });
+
+            $("#rp-next").click(function() {
+                playNextSong();
+            });
+    });
+	
+	startPlaying();
+
+	fetchTasteProfile(id);
+
 }
 
 // -------------------------------------- Fetching details of taste profile ------------------------------------
@@ -344,57 +402,7 @@ $(document).ready(function(){
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
 
-	$('#bad-song').click(badSong);
-    $('#good-song').click(goodSong);
-
-    $('#create-tp-button').click(createTasteProfile);
-
-    $('#update-tp-button').click(function(){
-    	var blocks = getArtistUpdateBlock("update-artist-name");
-    	if (blocks.length == 0) {
-			alert("Please enter artist name to update taste profiles...");
-		} else {
-			updateTasteProfile(currentCatalogID, blocks);
-		}
-    });
-
-    initUI();
-
-	R.ready(function() {
-            R.player.on("change:playingTrack", function(track) {
-                if (track) {
-                    var image = track.attributes.icon;
-                    $("#rp-album-art").attr('src', image);
-                } else {
-                    playNextSong();
-                }
-            });
-
-            R.player.on("change:playState", function(state) {
-                if (state == R.player.PLAYSTATE_PAUSED) {
-                    $("#rp-pause-play i").removeClass("fa-pause");
-                    $("#rp-pause-play i").addClass("fa-play");
-                }
-                if (state == R.player.PLAYSTATE_PLAYING) {
-                    $("#rp-pause-play i").removeClass("fa-play");
-                    $("#rp-pause-play i").addClass("fa-pause");
-                }
-            });
-
-            R.player.on("change:playingSource", function(track) {});
-
-            $("#rp-pause-play").click(function() {
-                R.player.togglePause();
-            });
-
-            $("#rp-next").click(function() {
-                playNextSong();
-            });
-    });
 	
-	startPlaying();
-
-	fetchTasteProfile(currentCatalogID);
 
 
 

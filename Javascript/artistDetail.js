@@ -19,8 +19,8 @@ function getSource(url) {
 // 	getArtistDetail(artist_id_spotify_test);
 // );
 
-$(document).ready(function() 
-// function getArtistDetail(artist_id_spotify，name) 
+// $(document).ready(function() 
+function getArtistDetail(artist_id_spotify，name) 
 {
 	console.log('test integrate', artist_id_spotify);
 	$('#searchBox').hide();
@@ -116,7 +116,7 @@ $(document).ready(function()
         }
     });
 }
-);
+// );
 
 function searchBlogs (artist_id) {
 	 en.artist.blogs(

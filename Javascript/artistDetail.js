@@ -1,13 +1,14 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
 var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
 var artist_id_spotify = 'AR7J9AP1187FB5BD64';
-var liked = false;
+var liked;
 var artist_name="adele";
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
 var artist = {
 	"123" : "celia",
-	"234" : "weixin"
+	"234" : "weixin",
+	"AR7J9AP1187FB5BD64":"Adele"
 }
 
 
@@ -41,6 +42,13 @@ function getArtistDetail(name, artist_id_spotify) {
   	$('#star-five').show();
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
+
+	var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
+	for (var artist in starredArtists) {
+		if (artist === artist_id_spotify) {
+			liked = true;
+		}
+	}
 
 	$.ajax({
       type: "GET",

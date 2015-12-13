@@ -12,7 +12,7 @@ function buildArtistBlock(name, url, bio, id) {
   name = name ? name : 'no name';
   bio = bio ? bio : 'no description';
   return '<div class=\'artistListBlock\'><p class=\'artistListName\'>' +
-          name + '</p><button onclick=\"alert(\'' + id + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
+          name + '</p><button onclick=\"getArtistDetail(\'' + id + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
           'play the artist</button>' + '<div class=\'artistListImage\'>' +
           '<img src=\'' + url + '\' class=\'artistListAvatar\'></div>' +
           '<div class=\'artistListBio\'><p class=\'artistListBioText\'>' +
@@ -74,6 +74,13 @@ function loadMore() {
 }
 
 $(document).ready(function(){
+  console.log('Test index ppppage');
+  $('#likeLabel').hide();
+  $('#control').hide();
+  $('#blogs').hide();
+  $('#help').hide();
+  $('.artist-block').hide();
+  $('#star-five').hide();
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
   en.artist.hottest(function(data) {

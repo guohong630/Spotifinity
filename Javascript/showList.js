@@ -79,7 +79,7 @@ function showArtist(){
 			a = document.createElement('a');
 			a.setAttribute('id', key + "_unique_number");
 			a.setAttribute('class', "list_link");
-			a.href = "javascript:showStaredArtisit(" + key + ", " + artist +")";
+			a.href = "javascript:getArtistDetail(" + artist + ", " + key +")";
 			a.innerHTML = artist;
 			li.appendChild(a);
 			side_bar.appendChild(li);

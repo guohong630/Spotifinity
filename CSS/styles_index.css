@@ -3,8 +3,14 @@
 }*/
 
 #side_bar {
-	margin-top:10px;
+	margin-top:11px;
 	float: top;
+}
+
+a.list_link {
+    font-size:1em;
+    font-style: italic;
+    margin-left:8px;
 }
 
 #menu-toggle {
@@ -21,15 +27,21 @@
     text-align:center;
 }
 
-h1.title {
+h1.title>a {
     font-style:'Hoefler Text', Georgia, 'Times New Roman', serif;
     font-weight: normal;
-    font-size: 3.00em;
+    font-size: 1.55em;
     letter-spacing: .2em;
     line-height: 1.1em;
     margin:0px;
     text-align: center;
     text-transform: uppercase;
+    text-decoration:none;
+    color:black;
+}
+
+h1.title>a:hover, h1.title>a:focus{
+    text-decoration:none;
 }
 
 

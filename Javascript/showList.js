@@ -43,6 +43,7 @@ function showProfile() {
 			var profile = catalogs[key];
 			a = document.createElement('a');
 			a.setAttribute('id', key + "_unique_number");
+			a.setAttribute('class', "list_link");
 			a.href = "javascript:showTasteProfile('" + key + "', '" + profile +"')";
 			a.innerHTML = profile;
 			li.appendChild(a);
@@ -84,6 +85,7 @@ function showArtist(){
 			var artist = staredArtist[key];
 			a = document.createElement('a');
 			a.setAttribute('id', key + "_unique_number");
+			a.setAttribute('class', "list_link");
 			a.href = "javascript:showStaredArtisit(" + key + ", " + artist +")";
 			a.innerHTML = artist;
 			li.appendChild(a);

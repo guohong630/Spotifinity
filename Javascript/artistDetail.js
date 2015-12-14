@@ -1,6 +1,6 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
-var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
-var artist_id_spotify = 'AR7J9AP1187FB5BD64';
+// var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
+// var artist_id_spotify = 'AR7J9AP1187FB5BD64';
 var liked;
 var artist_name="adele";
 var API_KEY = 'R5BY7E9VFAU6GC05T';
@@ -14,10 +14,6 @@ var artist = {
 
 localStorage.setItem("staredArtist", JSON.stringify(artist));
 
-var catalogs = {
-	CAERBWP1518E24EDE3: 'British Pop Profile',
-	whgedjwe: 'wedewd'
-};
 
 function getSource(url) {
 	var path = url.split('/');
@@ -31,15 +27,10 @@ function getSource(url) {
 // $(document).ready(function() 
 function getArtistDetail(name, artist_id_spotify) {	
 	console.log('test integrate', artist_id_spotify);
-	$('#searchBox').hide();
-	$('#artistList').hide();
-	$('#hotList').hide();
-	$('#likeLabel').show();
-  	$('#control').show();
-  	$('#blogs').show();
-  	$('#help').show();
-  	$('.artist-block').show();
-  	$('#star-five').show();
+	$('#xinyue').hide();
+	$('#lixin').hide();
+	$('#hong').show();
+
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
 
@@ -173,8 +164,8 @@ function searchBiographies (artist_id) {
 			}
 			$('#artist-bio').html(
 				'<p class="bio-text"> '+bio_text + '</p>'+
-				'<p class="ellipsis">...</p>'+
-				'<a id="bio-link" target="_blank" href="'+bio_url+'">'+'Read More'+'</a>'
+				'<span class="ellipsis">...</span>'+
+				'<span id="bio-link"><a target="_blank" href="'+bio_url+'">'+'Read More'+'</a></span>'
 			);
 		},
 		function() {
@@ -240,7 +231,7 @@ function changeLikeState(artist_id, name) {
 	}
 	liked = !liked;
 	console.log('after change',liked);
-	displayLikeStar(name, artist_id_spotify);
+	displayLikeStar(name, artist_id);
 	showArtist();
 }
 

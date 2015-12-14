@@ -5,6 +5,7 @@ var dashLine = '';
 var offset = 0;
 var limit = 10;
 
+var bioLength = 200;
 var query;
 var type;
 
@@ -37,14 +38,18 @@ function search(query, type, isAppend) {
     data.response.artists.forEach(function(artist, index) {
       var name = artist.name;
       var image_url = null;
-      var bio = null;
       var id = artist.id;
       if (artist.images[0])
         image_url = artist.images[0].url;
-      if (artist.biographies[0]) {
-        bio = artist.biographies[0].text;
-        if (bio.length > 200)
-          bio = bio.substring(0, 200) + '...';
+      var bio = null;
+      var artist = data.response.artists[index];
+      for (var j in artist.biographies) {
+        if (artist.biographies[j].site == "wikipedia") {
+          bio = artist.biographies[j].text;
+          console.log('length is ' + bio.length);
+          if (bio.length > bioLength)
+          bio = bio.substring(0, bioLength) + '...';
+        }
       }
       $('#artistList').append(buildArtistBlock(name, image_url, bio, id));
     });
@@ -92,9 +97,16 @@ $(document).ready(function(){
     for (var i = 0; i < 5; i++) {
       var name = data.response.artists[i].name;
       var id = data.response.artists[i].id;
-      var bio = data.response.artists[i].biographies[0].text;
-      if (bio.length > 200)
-        bio = bio.substring(0, 200) + '...';
+      var bio = null;
+      var artist = data.response.artists[i];
+      for (var j in artist.biographies) {
+        if (artist.biographies[j].site == "wikipedia") {
+          bio = artist.biographies[j].text;
+          console.log('length is ' + bio.length);
+          if (bio.length > bioLength)
+          bio = bio.substring(0, bioLength) + '...';
+        }
+      }
       var image_url = data.response.artists[i].images[0].url;
       $('#hotList').append(buildArtistBlock(name, image_url, bio, id));
     }

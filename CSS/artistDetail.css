@@ -1,37 +1,10 @@
-.artist-block {
-	position: absolute;
-	top: 100px;
-	left: 300px;
-	width: 800px;
-	background-color: #282828;
-	height: 480px;
-}
 
 #artist-name {
 	position: relative;
-	left: 40px;
-	top: 15px;
+	margin-left: 40px;
+	margin-top: 15px;
 	font-size: 22px;
 	font-weight: bold;
-	color: #FFFAFA;
-}
-
-.artist-avatar {
-	position: relative;
-	left: 30px;
-	top: 10px;
-    display: block;
-    max-width:130px;
-    max-height:130px;
-    width: auto;
-    height: auto;
-}
-
-.news-section{
-	position: absolute;
-	top: 580px;
-	left: 300px;
-	width: 800px;
 }
 
 .news-block{
@@ -64,68 +37,35 @@
 
 .bio-text{
 	position: relative;
-	height: 60px;
-	width: 570px;
-	left: 10px;
+	height: 120px;
 	overflow: hidden;
-	color: #FFFAFA;
+	margin-top: 10px;
+	margin-bottom:0;
 }
 
-.ellipsis{
-	position: relative;
-	left: 10px;
-	top: -15px;
-	color: #FFFAFA;
-}
 
 #bio-link{
 	position: relative;
-	left: 500px;
-	top: -35px;
+	float:right;
 }
 
 #artist-bio{
-	position: absolute;
-	left: 190px;
-	/*top: 70px;*/
-	top: 80px;
-	height: 90px;
-	width: 600px;
-	border: 1px solid #FFFAFA;
+	height: 100%;
+	border: 1px solid black;
 }
 
 #blogs{
-	position: absolute;
-	top: 350px;
-	left: 400px;
-	height: 185px;
-	width: 600px;
-	background-color: #DCE1E3;
+	margin-left: 40px;
 }
 
 #control{
-	position: absolute;
-	width: 600px;
-	height: 50px;
-	left: 520px;
-	top: 280px;
-}
-
-#control-button2{
-	position: relative;
-	left: 30px;
-}
-
-#control-button3{
-	position: relative;
-	left: 60px;
+	display: inline-block;
 }
 
 #playerButton {
 	position: absolute;
-	left: 830px;
-	top: 100px;
-	width: 800px;
+	right: 16px;
+	top: 70px;
 	height: 80px;
 }
 
@@ -136,11 +76,12 @@
 }
 
 #star-five {
-	position: relative;
+	/*position: relative;
 	height: 32px;
 	width: 32px;
 	left: 100px;
-	top: -30px;
+	top: -30px;*/
+	display: inline-block;
 }
 
 #likeLabel {
@@ -150,16 +91,16 @@
 }
 
 .like-artist {
-	position: absolute;
-	left: 330px;
-	top: 280px;
+	margin-left: 55px;
 }
 
 #help {
-	position: relative;
+/*	position: relative;
 	width: 100px;
 	left: 150px;
-	top: -55px;
+	top: -55px;*/
+	display: inline-block;
+	margin-left: 30px;
 }
 
 .blog-title {

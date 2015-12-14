@@ -26,6 +26,8 @@ s
 <script src="Javascript/showList.js" type="text/javascript"></script>
 <script src="./Javascript/echonest.js" type="text/javascript"></script>
 <script src="./Javascript/profile.js" type="text/javascript"></script>
+<script src="./Javascript/artistDetail.js" type="text/javascript"></script>
+
 
 <title>Spotifinity</title>
 
@@ -64,7 +66,7 @@ s
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-md-12">
 
 						<h1>Spotifinity</h1>
 
@@ -210,6 +212,61 @@ s
 				</div>
 
 
+				<!-- Page content for Hong -->
+
+				<div class="container-fluid" id="hong">
+					<div class="row well">
+						<div id="playerButton">
+					  	</div>
+					 <div class="artist-block col-md-12">
+						  <p id="artist-name"></p>
+						<div class="row" style="margin-top: 20px;">
+							<div id="artist-image" class="col-md-3">
+
+					  		</div>
+					    	<div id="artist-bio" class="col-md-9"></div>
+					    </div>
+					    <div class="row">
+					    	<div class="like-artist col-md-3">
+							    <!-- <span id="likeLabel">Like This Artist</span> -->
+							    <div id="star-five"></div>
+							      <a href="#" data-toggle="popover" data-container="body" title="Need Help?" data-content="Contact spotifinity@gmail.com"><i id="help" class="fa fa-question-circle fa-lg"></i></a>
+							</div>
+
+							<div id="control" class="col-md-8 btn-group">
+							    <button class="btn btn-default group-action" onclick="searchSimilarArtists()" id="control-button1" >Similar Artists</button>
+							    <button class="btn btn-default group-action" onclick="AddToProfile()" id="control-button2" data-toggle="modal" data-target="#update-tp-modal">Add to Profile</button>
+							    <button class="btn btn-default group-action" onclick="AddToNew()" id="control-button3" data-toggle="modal" data-target="#create-tp-modal">Add to New Profile</button>
+							</div>
+						</div>
+					  </div>
+					</div>
+
+					<div class="row well">
+						<div class="panel panel-success col-md-11" style="padding:0" id="blogs">
+							<div class="panel-heading">BLOGS</div>
+							<div class="panel-body">
+								<table class="table table-hover" id="blog_list">
+							      <tbody>
+							        <tr id='blog0'>
+							          
+							        </tr>
+							      </tbody>
+					    		</table>
+					    	</div>
+						</div>
+					</div>
+
+					<div class="row well">
+						<div class="panel panel-success col-md-11" style="padding:0" id="blogs">
+							<div class="panel-heading">NEWS</div>
+							<div class="panel-body news-section">
+					    	</div>
+						</div>
+					</div>
+				</div>
+
+
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
 							Menu</a>
 
@@ -234,44 +291,7 @@ s
 
 
 
-  <div class="artist-block">
-	  <p id="artist-name"></p>
-  	<div id="artist-image">
-
-  	</div>
-    <div id="artist-bio"></div>
-  </div>
-
-  <div id="playerButton">
-
-  </div>
-
-  <div class="like-artist">
-    <p id="likeLabel">Like This Artist</p>
-    <div id="star-five"></div>
-    <div id="help">
-      <a href="#" data-toggle="popover" data-container="body" title="Need Help?" data-content="Contact spotifinity@gmail.com"><img src="images/help.png" ></a></div> 
-  </div>  
-
-  <div id="control">
-    <button class="btn btn-default active group-action" onclick="searchSimilarArtists()" id="control-button1" >Similar Artists</button>
-    <button class="btn btn-default active group-action" onclick="AddToProfile()" id="control-button2" data-toggle="modal" data-target="#update-tp-modal">Add to Profile</button>
-    <button class="btn btn-default active group-action" onclick="AddToNew()" id="control-button3" data-toggle="modal" data-target="#create-tp-modal">Add to New Profile</button>
-  </div>
-
-  <div id="blogs"  padding-left="10%" padding-top="100px">
-    <table class="table table-hover" id="blog_list">
-      <tbody>
-        <tr id='blog0'>
-          
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="news-section">
-    
-  </div> 
+ 
 
 
 

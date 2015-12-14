@@ -14,10 +14,6 @@ var artist = {
 
 localStorage.setItem("staredArtist", JSON.stringify(artist));
 
-var catalogs = {
-	CAERBWP1518E24EDE3: 'British Pop Profile',
-	whgedjwe: 'wedewd'
-};
 
 function getSource(url) {
 	var path = url.split('/');
@@ -31,15 +27,15 @@ function getSource(url) {
 // $(document).ready(function() 
 function getArtistDetail(name, artist_id_spotify) {	
 	console.log('test integrate', artist_id_spotify);
-	$('#searchBox').hide();
-	$('#artistList').hide();
-	$('#hotList').hide();
+	$('#xinyue').hide();
+	$('#lixin').hide();
 	$('#likeLabel').show();
   	$('#control').show();
   	$('#blogs').show();
   	$('#help').show();
   	$('.artist-block').show();
   	$('#star-five').show();
+
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
 
@@ -173,8 +169,8 @@ function searchBiographies (artist_id) {
 			}
 			$('#artist-bio').html(
 				'<p class="bio-text"> '+bio_text + '</p>'+
-				'<p class="ellipsis">...</p>'+
-				'<a id="bio-link" target="_blank" href="'+bio_url+'">'+'Read More'+'</a>'
+				'<span class="ellipsis">...</span>'+
+				'<span id="bio-link"><a target="_blank" href="'+bio_url+'">'+'Read More'+'</a></span>'
 			);
 		},
 		function() {

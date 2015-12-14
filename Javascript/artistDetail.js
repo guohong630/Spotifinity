@@ -1,6 +1,6 @@
 var artist_id = 'spotify:artist:5l8VQNuIg0turYE1VtM9zV';
-var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
-var artist_id_spotify = 'AR7J9AP1187FB5BD64';
+// var artist_id_spotify_test = '5l8VQNuIg0turYE1VtM9zV';
+// var artist_id_spotify = 'AR7J9AP1187FB5BD64';
 var liked;
 var artist_name="adele";
 var API_KEY = 'R5BY7E9VFAU6GC05T';
@@ -240,7 +240,7 @@ function changeLikeState(artist_id, name) {
 	}
 	liked = !liked;
 	console.log('after change',liked);
-	displayLikeStar(name, artist_id_spotify);
+	displayLikeStar(name, artist_id);
 	showArtist();
 }
 

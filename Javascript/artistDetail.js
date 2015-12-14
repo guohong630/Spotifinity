@@ -24,13 +24,16 @@ function getArtistDetail(name, artist_id_spotify) {
 
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
-
-	var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
-	for (var artist in starredArtists) {
-		if (artist === artist_id_spotify) {
-			liked = true;
+	if (!(localStorage.getItem("staredArtist") === "")) {
+		var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
+		for (var artist in starredArtists) {
+			if (artist === artist_id_spotify) {
+				liked = true;
+			}
 		}
-	}
+	} else {
+		liked = false;
+	}	
 
 	$.ajax({
       type: "GET",
@@ -214,7 +217,11 @@ function changeLikeState(artist_id, name) {
 		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));
 		console.log(localStorage.getItem("staredArtist"));
 	} else {
-		var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
+		if (!(localStorage.getItem("staredArtist") === "")) {
+			var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
+		} else {
+			var starredArtists = {};
+		}
 		console.log(starredArtists);
 		starredArtists[artist_id] = name;
 		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));

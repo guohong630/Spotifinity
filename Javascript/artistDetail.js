@@ -6,9 +6,9 @@ var artist_name="adele";
 var API_KEY = 'R5BY7E9VFAU6GC05T';
 
 var artist = {
-	"123" : "celia",
-	"234" : "weixin",
-	"AR7J9AP1187FB5BD64":"Adele"
+	// "123" : "celia",
+	// "234" : "weixin",
+	// "AR7J9AP1187FB5BD64":"Adele"
 }
 
 

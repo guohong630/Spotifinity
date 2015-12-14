@@ -12,7 +12,9 @@ localStorage.setItem("profiles", JSON.stringify(catalogs));
 
 
 var addedArtist = {
-	"123" : "celia"
+	// "123" : "celia",
+	// "234" : "weixin",
+	// "AR7J9AP1187FB5BD64":"Adele"
 }
 
 localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
@@ -51,8 +53,11 @@ function showProfile() {
 	}
 	for (var key in addedCatalogs){
 		if (catalogs[key] == null){
-			side_bar.removeChild(document.getElementById("list_profile_" + key));
-			delete addedCatalogs[key];
+			var element = document.getElementById("list_artist_" + key);
+			if (element != null){
+				element.parentNode.removeChild(element);
+				delete addedCatalogs[key];
+			}
 		}
 	}
 
@@ -90,9 +95,13 @@ function showArtist(){
 
 	for (var key in addedArtist){
 		if (staredArtist[key] == null){
-
-			side_bar.removeChild(document.getElementById("list_artist_" + key));
-			delete addedArtist[key];
+			console.log("list_artist_" + key)
+			var element = document.getElementById("list_artist_" + key);
+			console.log(element)
+			if (element != null){
+				element.parentNode.removeChild(element);
+				delete addedArtist[key];
+			}
 		}
 	}
 	localStorage.setItem("staredArtist", JSON.stringify(staredArtist));

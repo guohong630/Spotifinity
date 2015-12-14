@@ -232,8 +232,8 @@ function changeLikeState(artist_id, name) {
 		console.log(starredArtists);
 		starredArtists[artist_id] = name;
 		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));
-		console.log(localStorage.getItem("staredArtist"));
 	}
+	console.log(localStorage.getItem("staredArtist"));
 	liked = !liked;
 	console.log('after change',liked);
 	displayLikeStar(name, artist_id);

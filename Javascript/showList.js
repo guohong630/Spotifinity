@@ -4,9 +4,8 @@ var addedProfile = {
 localStorage.setItem("addedProfile", JSON.stringify(addedProfile));
 
 var catalogs = {
-	"123" : "celia",
-	"234" : "weixin"
-}
+	CAERBWP1518E24EDE3: 'British Pop Profile'
+};
 
 localStorage.setItem("profiles", JSON.stringify(catalogs));
 
@@ -44,7 +43,7 @@ function showProfile() {
 			var profile = catalogs[key];
 			a = document.createElement('a');
 			a.setAttribute('id', key + "_unique_number");
-			a.href = "javascript:showTasteProfile(" + key + ", " + profile +")";
+			a.href = "javascript:showTasteProfile('" + key + "', '" + profile +"')";
 			a.innerHTML = profile;
 			li.appendChild(a);
 			side_bar.appendChild(li);

@@ -97,6 +97,7 @@ function createTasteProfile() {
 			catalogs[profileID] = profileName;
 			localStorage.setItem('profiles', JSON.stringify(catalogs));
 			console.log(catalogs);
+            showProfile();
 			updateTasteProfile(profileID, blocks);
 		}, function(data) {
                 error("Couldn't create catalog " + profileName);

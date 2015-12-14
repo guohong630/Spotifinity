@@ -223,6 +223,7 @@ function showTasteProfile(id, name) {
 
     $('#lixin').hide();
     $('#hong').hide();
+    $('#xinyue').show();
 
 
 	$('#bad-song').click(badSong);

@@ -174,7 +174,7 @@ function searchNews(artist_id) {
 	 	function(data) {
 	      	console.log('news',data);
 	      	var news = data.response.news;
-	      	$('news-section').empty();
+	      	$('.news-section').empty();
 	      	for (var i = 0; i < 9; i++) {
 	      		var title = news[i].name;
 	      		var summary = news[i].summary;

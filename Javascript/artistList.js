@@ -85,12 +85,13 @@ function loadMore() {
 
 $(document).ready(function(){
   console.log('Test index ppppage');
-  $('#likeLabel').hide();
-  $('#control').hide();
-  $('#blogs').hide();
-  $('#help').hide();
-  $('.artist-block').hide();
-  $('#star-five').hide();
+  // $('#likeLabel').hide();
+  // $('#control').hide();
+  // $('#blogs').hide();
+  // $('#help').hide();
+  // $('.artist-block').hide();
+  // $('#star-five').hide();
+  $('#hong').hide();
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
   en.artist.hottest(function(data) {

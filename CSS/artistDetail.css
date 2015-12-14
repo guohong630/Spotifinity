@@ -65,8 +65,9 @@
 #playerButton {
 	position: absolute;
 	right: 16px;
-	top: 70px;
+	top: 90px;
 	height: 80px;
+	z-index: 110;
 }
 
 #follower {

@@ -4,9 +4,9 @@ var SHARED_SECRET = '6hLGAOJdTSSQY22z/uK0/A';
 
 var en;
 
-var catalogs = {
-	CAERBWP1518E24EDE3: 'British Pop Profile'
-};
+// var catalogs = {
+// 	CAERBWP1518E24EDE3: 'British Pop Profile'
+// };
 
 var curSong = null;
 var currentCatalogID = "CAERBWP1518E24EDE3";
@@ -98,7 +98,6 @@ function createTasteProfile() {
 			localStorage.setItem('profiles', JSON.stringify(catalogs));
 			console.log(catalogs);
 			updateTasteProfile(profileID, blocks);
-			showProfile();
 		}, function(data) {
                 error("Couldn't create catalog " + profileName);
             });
@@ -221,6 +220,10 @@ function startPlaying() {
 
 function showTasteProfile(id, name) {
 	currentCatalogID = id;
+
+    $('#lixin').hide();
+    $('#hong').hide();
+
 
 	$('#bad-song').click(badSong);
     $('#good-song').click(goodSong);
@@ -400,9 +403,5 @@ function initUI() {
 $(document).ready(function(){
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});
-
-	
-
-
 
 })

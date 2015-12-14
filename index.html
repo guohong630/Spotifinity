@@ -288,7 +288,43 @@
 		</small>
 	</div>
 
+<!-- Create new profile modal -->
+<div class="modal fade" id="create-tp-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create New Profile</h4>
+      </div>
+      <div class="modal-body">
+        <input placeholder="Type group name here..." type="text" class="form-control" id="new-tp-name"> 
+        <input placeholder="Enter comma separated artists names you want to add to the profile" type="text" class="form-control" id="new-artist-name" style="margin-top:15px;"> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-no-border" data-dismiss="modal" id="create-tp-button">CREATE</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+
+<!-- Update profile modal -->
+<div class="modal fade" id="update-tp-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Update Profile</h4>
+      </div>
+      <div class="modal-body">
+        <input placeholder="Enter comma separated artists names you want to add to the profile" type="text" class="form-control" id="update-artist-name"> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-no-border" data-dismiss="modal" id="update-tp-button">UPDATE</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
  
 

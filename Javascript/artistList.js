@@ -42,7 +42,7 @@ function search(query, type, isAppend) {
       if (artist.images[0])
         image_url = artist.images[0].url;
       var bio = null;
-      var artist = data.response.artists[i];
+      var artist = data.response.artists[index];
       for (var j in artist.biographies) {
         if (artist.biographies[j].site == "wikipedia") {
           bio = artist.biographies[j].text;

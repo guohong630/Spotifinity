@@ -334,29 +334,35 @@
 	$( document ).ready(function() {		
     	$('#xinyue').hide();
     	$('#hong').hide();   
-    	if (localStorage.getItem("addedProfile") == null){
-    		var addedProfile = {};
-			localStorage.setItem("addedProfile", JSON.stringify(addedProfile));
-    	} 
-    	if (localStorage.getItem("addedArtist") == null){
-    		var addedArtist = {};
-    		localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
-    	} 
-    	console.log(typeof localStorage.getItem('staredArtist'));
-    	console.log(localStorage.getItem('staredArtist') == undefined);
+    	var addedProfile = {};
+		localStorage.setItem("addedProfile", JSON.stringify(addedProfile));
 
-    	if (localStorage.getItem('staredArtist') == null){
+    	var addedArtist = {};
+    	localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
+
+
+    	if (localStorage.getItem('staredArtist') === "null"){
     		var staredArtist = {};
-    		console.log(staredArtist)
     		localStorage.setItem("staredArtist", JSON.stringify(staredArtist));		
     	}
+
+    	if (localStorage.getItem('profiles') === "null"){
+    		catalogs = {};
+    		localStorage.setItem("profiles", JSON.stringify(catalogs));		
+    	} else {
+    		catalogs = JSON.parse(localStorage.getItem("profiles"));
+    	}
+
     	showProfile();
     	showArtist();
 	});
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+    </script>
+
+    <script type="text/javascript">
+    	$("#menu-toggle").click(function(e) {
+        	e.preventDefault();
+        	$("#wrapper").toggleClass("toggled");
+    	});
     </script>
 
 	<script type="text/javascript">

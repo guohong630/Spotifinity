@@ -29,12 +29,7 @@ function getArtistDetail(name, artist_id_spotify) {
 	console.log('test integrate', artist_id_spotify);
 	$('#xinyue').hide();
 	$('#lixin').hide();
-	$('#likeLabel').show();
-  	$('#control').show();
-  	$('#blogs').show();
-  	$('#help').show();
-  	$('.artist-block').show();
-  	$('#star-five').show();
+	$('#hong').show();
 
 	en = new EchoNest(API_KEY);
 	$.ajaxSetup( {cache: false});

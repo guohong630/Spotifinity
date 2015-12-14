@@ -4,9 +4,9 @@ var SHARED_SECRET = '6hLGAOJdTSSQY22z/uK0/A';
 
 var en;
 
-// var catalogs = {
-// 	CAERBWP1518E24EDE3: 'British Pop Profile'
-// };
+catalogs = {
+ 	CAERBWP1518E24EDE3: 'British Pop Profile'
+};
 
 var curSong = null;
 var currentCatalogID = "CAERBWP1518E24EDE3";
@@ -214,10 +214,6 @@ function goodSong() {
     );
 }
 
-function startPlaying() {
-
-    createDynamicPlaylist();
-}
 
 function showTasteProfile(id, name) {
 	currentCatalogID = id;
@@ -273,7 +269,7 @@ function showTasteProfile(id, name) {
             });
     });
 	
-	startPlaying();
+    createDynamicPlaylist();
 
 	fetchTasteProfile(id);
 
@@ -353,6 +349,7 @@ function updateTasteProfileView() {
 }
 
 function showSimpleTPArtistList(top_div, artists) {
+    $(top_div).empty();
     if (artists.length > 0) {
         $(top_div).show();
         $.each(artists, 
@@ -366,6 +363,7 @@ function showSimpleTPArtistList(top_div, artists) {
 }
 
 function showSimpleTPSongList(top_div, row_div, songs) {
+    $(row_div).empty();
     if (songs.length > 0) {
         $(top_div).show();
         var rows = $(row_div);

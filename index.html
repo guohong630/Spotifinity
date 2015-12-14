@@ -331,11 +331,27 @@
 
 
 	<script>
-	$( document ).ready(function() {
+	$( document ).ready(function() {		
+    	$('#xinyue').hide();
+    	$('#hong').hide();   
+    	if (localStorage.getItem("addedProfile") == null){
+    		var addedProfile = {};
+			localStorage.setItem("addedProfile", JSON.stringify(addedProfile));
+    	} 
+    	if (localStorage.getItem("addedArtist") == null){
+    		var addedArtist = {};
+    		localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
+    	} 
+    	console.log(typeof localStorage.getItem('staredArtist'));
+    	console.log(localStorage.getItem('staredArtist') == undefined);
+
+    	if (localStorage.getItem('staredArtist') == null){
+    		var staredArtist = {};
+    		console.log(staredArtist)
+    		localStorage.setItem("staredArtist", JSON.stringify(staredArtist));		
+    	}
     	showProfile();
     	showArtist();
-    	$('#xinyue').hide();
-    	$('#hong').hide();
 	});
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

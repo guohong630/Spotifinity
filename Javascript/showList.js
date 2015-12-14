@@ -1,22 +1,13 @@
-var addedProfile = {
-	"123" : "celia"
-}
-localStorage.setItem("addedProfile", JSON.stringify(addedProfile));
-
-var catalogs = {
-	CAERBWP1518E24EDE3: 'British Pop Profile'
-};
-
-localStorage.setItem("profiles", JSON.stringify(catalogs));
+// localStorage.setItem("profiles", JSON.stringify(catalogs));
 
 
-var addedArtist = {
-	// "123" : "celia",
-	// "234" : "weixin",
-	// "AR7J9AP1187FB5BD64":"Adele"
-}
+// var addedArtist = {
+// 	// "123" : "celia",
+// 	// "234" : "weixin",
+// 	// "AR7J9AP1187FB5BD64":"Adele"
+// }
 
-localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
+// localStorage.setItem("addedArtist", JSON.stringify(addedArtist));
 
 // var artist = {
 // 	"123" : "celia",

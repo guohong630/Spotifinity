@@ -95,9 +95,10 @@ function createTasteProfile() {
 		en.catalog.create(profileName, function(data){
 			var profileID = data.response.id;
 			catalogs[profileID] = profileName;
+            console.log(catalogs);
 			localStorage.setItem('profiles', JSON.stringify(catalogs));
-			console.log(catalogs);
 			updateTasteProfile(profileID, blocks);
+            showProfile();
 		}, function(data) {
                 error("Couldn't create catalog " + profileName);
             });
@@ -228,8 +229,6 @@ function showTasteProfile(id, name) {
 
 	$('#bad-song').click(badSong);
     $('#good-song').click(goodSong);
-
-    $('#create-tp-button').click(createTasteProfile);
 
     $('#update-tp-button').click(function(){
     	var blocks = getArtistUpdateBlock("update-artist-name");

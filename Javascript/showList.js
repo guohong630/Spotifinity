@@ -16,9 +16,11 @@
 
 // localStorage.setItem("staredArtist", JSON.stringify(artist));
 
+var catalogs = {};
 
 
 function showProfile() {
+	$('#create-tp-button').click(createTasteProfile);
 	var retrievedObject = localStorage.getItem("profiles");
 	var catalogs = JSON.parse(retrievedObject);
 	var addedObject = localStorage.getItem("addedProfile");

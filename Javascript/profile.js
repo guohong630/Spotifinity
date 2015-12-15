@@ -4,10 +4,6 @@ var SHARED_SECRET = '6hLGAOJdTSSQY22z/uK0/A';
 
 var en;
 
-catalogs = {
- 	CAERBWP1518E24EDE3: 'British Pop Profile'
-};
-
 var curSong = null;
 var currentCatalogID = "CAERBWP1518E24EDE3";
 var allItems = [];

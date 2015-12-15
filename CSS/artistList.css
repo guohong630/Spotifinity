@@ -3,9 +3,9 @@
 	/*width: 800px;*/
 	height: 200px;
 	/*left: 10%;*/
-	width: 70%;
+	width: 84%;
     margin: 0 auto;
-	background-color: #282828;
+	background-color: #f5f5f5;
 }
 
 .artistListName {
@@ -14,7 +14,7 @@
 	top: 20px;
 	font-size: 22px;
 	font-weight: bold;
-	color: #FFFAFA;
+	/*color: #FFFAFA;*/
 }
 
 .artistListImage {
@@ -31,12 +31,12 @@
     padding-left: 8px;
     padding-right: 3px;
     padding-bottom: 5px;
-    border: 1px solid #FFFAFA;
+    border: 1px solid;
 }
 
 .artistListBioText {
 	overflow: hidden;
-	color: #FFFAFA;
+	/*color: #FFFAFA;*/
 }
 
 .artistListPlay {
@@ -62,6 +62,7 @@
 #searchBox {
 	margin: 0 auto;
 	width: 100%;
+	padding-left: 6%;
 }
 
 .typeRadio {

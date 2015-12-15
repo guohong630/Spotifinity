@@ -127,7 +127,7 @@ function searchBlogs (artist_id) {
 	      	for (var i = 0; i < 4; i++) {
 	      		$('#blog' + i).html(
 	      			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
-	      			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
+	      			'<td><a class="blog-link button-text" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
 	      		);
 	      		$('#blog_list').append('<tr id="blog' + (i + 1) +'"></tr>');
 	      	}
@@ -159,7 +159,7 @@ function searchBiographies (artist_id) {
 			$('#artist-bio').html(
 				'<p class="bio-text"> '+bio_text + '</p>'+
 				'<span class="ellipsis">...</span>'+
-				'<span id="bio-link"><a target="_blank" href="'+bio_url+'">'+'Read More'+'</a></span>'
+				'<span id="bio-link"><a target="_blank" href="'+bio_url+'" class="button-text">'+'Read More'+'</a></span>'
 			);
 		},
 		function() {

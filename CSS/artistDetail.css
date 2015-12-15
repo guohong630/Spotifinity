@@ -46,6 +46,7 @@
 #bio-link{
 	position: relative;
 	float:right;
+	color: #87ca06;
 }
 
 #artist-bio{
@@ -110,3 +111,15 @@
 	overflow: hidden;
   	text-overflow: ellipsis;
 }
+
+.button-text{
+	color: #87ca06;
+}
+
+.head-text{
+	color: white;
+}
+
+.panel-success>.panel-heading {
+	color: white;
+	}

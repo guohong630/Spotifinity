@@ -29,6 +29,14 @@
 }
 
 .btn-no-border {
-    background-color: black;
+    background-color: #87ca06;
     color: white;
+    border: none;
 }
+
+.btn-no-border:hover, .btn-no-border:focus, .btn-no-border:active {
+    background-color: #87ca06;
+    color: white;
+    border: none;
+}
+

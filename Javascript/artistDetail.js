@@ -38,7 +38,13 @@ function getArtistDetail(name, artist_id_spotify) {
       success: function(data) {
       	console.log('artists name', data);
       	artist_id_spotify = data.artists.items[0].id;
-      	var image_url = data.artists.items[0].images[2].url;
+      	if (data.artists.items[0].images[2]) {
+      		var image_url = data.artists.items[0].images[2].url;
+      	} else if (data.artists.items[0].images[1]) {
+      		var image_url = data.artists.items[0].images[1].url;
+      	} else {
+      		var image_url = data.artists.items[0].images[0].url;
+      	}	
         document.getElementById('artist-name').innerHTML = name;
         $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
         $.ajax({
@@ -100,7 +106,7 @@ function searchBlogs (artist_id) {
 	      	for (var i = 0; i < 4; i++) {
 	      		$('#blog' + i).html(
 	      			'<td><p class="blog-title">' +blogarr[i].name+'</p></td>' +
-	      			'<td><a class="blog-link" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
+	      			'<td><a class="blog-link button-text" target="_blank" href="'+blogarr[i].url+'">'+'Read More'+'</a></td>'
 	      		);
 	      		$('#blog_list').append('<tr id="blog' + (i + 1) +'"></tr>');
 	      	}
@@ -125,14 +131,14 @@ function searchBiographies (artist_id) {
 					bio_url = bioarr[i].url;
 				}
 			}
-			if (!bio_text) {
+			if (!bio_text && bioarr[0]) {
 				bio_text = bioarr[0].text;
 				bio_url = bioarr[0].url;
 			}
 			$('#artist-bio').html(
 				'<p class="bio-text"> '+bio_text + '</p>'+
 				'<span class="ellipsis">...</span>'+
-				'<span id="bio-link"><a target="_blank" href="'+bio_url+'">'+'Read More'+'</a></span>'
+				'<span id="bio-link"><a target="_blank" href="'+bio_url+'" class="button-text">'+'Read More'+'</a></span>'
 			);
 		},
 		function() {
@@ -190,7 +196,11 @@ function changeLikeState(artist_id, name) {
 		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));
 		console.log(localStorage.getItem("staredArtist"));
 	} else {
-		if (!(localStorage.getItem("staredArtist") === "")) {
+		console.log(localStorage.getItem("staredArtist") === "null");
+		if (!(localStorage.getItem("staredArtist") === "") 
+			&& !(localStorage.getItem("staredArtist") === "null")
+			) {
+			console.log('test222');
 			var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
 		} else {
 			var starredArtists = {};
@@ -211,6 +221,7 @@ function searchSimilarArtists() {
 }
 
 function AddToProfile() {
+	console.log(catalogs);
 	$('#profileList').empty();
 	for (var cata in catalogs) {
 		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ cata+'">'+catalogs[cata]+'</label></div>');

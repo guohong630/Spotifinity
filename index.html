@@ -233,8 +233,8 @@
 							</div>
 
 							<div id="control" class="col-md-8 btn-group">
-							    <button class="btn btn-default group-action col-md-4" onclick="AddToProfile()" id="control-button2" data-toggle="modal" data-target="#update-tp-modal">Add to Profile</button>
-							    <button class="btn btn-default group-action col-md-4" onclick="AddToNew()" id="control-button3" data-toggle="modal" data-target="#create-tp-modal">Add to New Profile</button>
+							    <button class="btn btn-default group-action col-md-4 btn-no-border" onclick="AddToProfile()" id="control-button2" data-toggle="modal" data-target="#update-tp-modal2">Add to Profile</button>
+							    <button class="btn btn-default group-action col-md-4 btn-no-border" onclick="AddToNew()" id="control-button3" data-toggle="modal" data-target="#create-tp-modal">Add to New Profile</button>
 							</div>
 						</div>
 					  </div>
@@ -242,7 +242,7 @@
 
 					<div class="row well">
 						<div class="panel panel-success col-md-11" style="padding:0" id="blogs">
-							<div class="panel-heading">BLOGS</div>
+							<div class="panel-heading head-text" style="background-color: #87ca06">BLOGS</div>
 							<div class="panel-body">
 								<table class="table table-hover" id="blog_list">
 							      <tbody>
@@ -257,7 +257,7 @@
 
 					<div class="row well">
 						<div class="panel panel-success col-md-11" style="padding:0" id="blogs">
-							<div class="panel-heading">NEWS</div>
+							<div class="panel-heading head-text" style="background-color: #87ca06">NEWS</div>
 							<div class="panel-body news-section">
 					    	</div>
 						</div>
@@ -325,6 +325,23 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+<!-- Add Artist to model modal -->
+<div class="modal fade" id="update-tp-modal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Artist to Profile</h4>
+      </div>
+      <div id="profileList">
+      </div>	
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-no-border" data-dismiss="modal" id="add-artist-btn" onclick="addToCatalog()">Add</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
  
 
 

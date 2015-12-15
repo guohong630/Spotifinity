@@ -217,7 +217,11 @@ function changeLikeState(artist_id, name) {
 		localStorage.setItem("staredArtist", JSON.stringify(starredArtists));
 		console.log(localStorage.getItem("staredArtist"));
 	} else {
-		if (!(localStorage.getItem("staredArtist") === "")) {
+		console.log(localStorage.getItem("staredArtist") === "null");
+		if (!(localStorage.getItem("staredArtist") === "") 
+			&& !(localStorage.getItem("staredArtist") === "null")
+			) {
+			console.log('test222');
 			var starredArtists = JSON.parse(localStorage.getItem("staredArtist"));
 		} else {
 			var starredArtists = {};

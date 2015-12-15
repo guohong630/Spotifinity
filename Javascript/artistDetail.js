@@ -76,7 +76,7 @@ function getArtistDetail(name, artist_id_spotify, isSpotify) {
   	});
 	console.log('artist_id_spotify', artist_id_spotify);
 	
-	if (!isSpotify) {
+	if (isSpotify === "true") {
 		artist_id = 'spotify:artist:' + artist_id_spotify;
 	} else {
 		artist_id = artist_id_spotify;

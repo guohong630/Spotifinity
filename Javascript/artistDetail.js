@@ -238,6 +238,7 @@ function searchSimilarArtists() {
 }
 
 function AddToProfile() {
+	console.log(catalogs);
 	$('#profileList').empty();
 	for (var cata in catalogs) {
 		$('#profileList').append('<div class="radio"><label><input type="radio" name="optradio" value="'+ cata+'">'+catalogs[cata]+'</label></div>');

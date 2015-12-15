@@ -11,11 +11,6 @@ function getSource(url) {
 	return path[2]	;
 }
 
-// $(document).ready(
-// 	getArtistDetail(artist_id_spotify_test);
-// );
-
-// $(document).ready(function() 
 function getArtistDetail(name, artist_id_spotify) {	
 	console.log('test integrate', artist_id_spotify);
 	$('#xinyue').hide();

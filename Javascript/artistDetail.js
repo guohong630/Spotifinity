@@ -11,8 +11,8 @@ function getSource(url) {
 	return path[2]	;
 }
 
-function getArtistDetail(name, artist_id_spotify) {	
-	console.log('test integrate', artist_id_spotify);
+function getArtistDetail(name, artist_id_spotify, isSpotify) {	
+	console.log('test integrate', artist_id_spotify, isSpotify);
 	$('#xinyue').hide();
 	$('#lixin').hide();
 	$('#hong').show();
@@ -76,8 +76,12 @@ function getArtistDetail(name, artist_id_spotify) {
   	});
 	console.log('artist_id_spotify', artist_id_spotify);
 	
-	artist_id = artist_id_spotify;
-
+	if (!isSpotify) {
+		artist_id = 'spotify:artist:' + artist_id_spotify;
+	} else {
+		artist_id = artist_id_spotify;
+	}	
+	console.log('artist_id', artist_id);
 	searchBlogs(artist_id);
 
 	searchBiographies(artist_id);

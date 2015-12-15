@@ -14,11 +14,11 @@ var type;
 //   alert(b);
 // }
 
-function buildArtistBlock(name, url, bio, id) {
+function buildArtistBlock(name, url, bio, id, isSpotify) {
   name = name ? name : 'no name';
-  bio = bio ? bio : 'no description';
+  bio = bio ? bio : 'No Description.';
   return '<div class=\'artistListBlock\'><p class=\'artistListName\'>' +
-          name + '</p><button onclick=\"getArtistDetail(\'' + name + '\', \'' + id + '\');\" type=\'button\' class=\'btn btn-default artistListPlay\'>' +
+          name + '</p><button onclick=\"getArtistDetail(\'' + name + '\', \'' + id + '\', \'' + isSpotify + '\');\" type=\'button\' class=\'btn btn-default btn-no-border artistListPlay\'>' +
           'Play the Artist</button>' + '<div class=\'artistListImage\'>' +
           '<img src=\'' + url + '\' class=\'artistListAvatar\'></div>' +
           '<div class=\'artistListBio\'><p class=\'artistListBioText\'>' +
@@ -26,6 +26,48 @@ function buildArtistBlock(name, url, bio, id) {
 }
 
 function search(query, type, isAppend) {
+  if (type == "name") {
+  $.ajax({
+      type: "GET",
+      dataType: "json",
+      cache: false,
+      url: "https://api.spotify.com/v1/search?q=" + query + "&type=artist&offset=" + offset + "&limit=" + limit,
+      success: function(data) {
+        console.log(data);
+        offset = offset + limit;
+        if (!isAppend)
+          $('#artistList').html('<h2 class=\'header\'>search result for ' + query + '</h2>');
+        data.artists.items.forEach(function(artist, index) {
+          console.log(artist);
+          var artist_id_spotify = artist.id;
+          var image_url = null;
+          if (artist.images[2])
+            image_url = artist.images[2].url;
+          en.artist.biographies(
+            "spotify:artist:" + artist_id_spotify,
+            function (biodata) {
+              var bioarr = biodata.response.biographies;
+              var bio_text;
+              for (var i = 0; i < bioarr.length; i++) {
+                if (bioarr[i].site === "wikipedia") {
+                  bio_text = bioarr[i].text;
+                }
+              };
+              if (bioarr[0] && !bio_text) {
+                bio_text = bioarr[0].text;
+              };
+              if (bio_text.length > bioLength)
+              bio_text = bio_text.substring(0, bioLength) + '...';
+              $('#artistList').append(buildArtistBlock(artist.name, image_url, bio_text, artist.id, true));
+            },
+            function() {
+              error("Trouble waiting for biographies");
+              }
+          );
+        })
+      }
+  })
+} else {
   var args = {
     'start': offset,
     'results': limit,
@@ -46,19 +88,18 @@ function search(query, type, isAppend) {
       for (var j in artist.biographies) {
         if (artist.biographies[j].site == "wikipedia") {
           bio = artist.biographies[j].text;
-          console.log('length is ' + bio.length);
           if (bio.length > bioLength)
           bio = bio.substring(0, bioLength) + '...';
         }
       }
-      $('#artistList').append(buildArtistBlock(name, image_url, bio, id));
+      $('#artistList').append(buildArtistBlock(name, image_url, bio, id, false));
     });
     offset = offset + limit;
-
   },
   function(err) {
     console.log(err);
   });
+  }
 }
 
 function searchArtist() {
@@ -109,7 +150,7 @@ $(document).ready(function(){
         }
       }
       var image_url = data.response.artists[i].images[0].url;
-      $('#hotList').append(buildArtistBlock(name, image_url, bio, id));
+      $('#hotList').append(buildArtistBlock(name, image_url, bio, id, false));
     }
     
   },

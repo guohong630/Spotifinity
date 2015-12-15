@@ -68,33 +68,12 @@ function getArtistDetail(name, artist_id_spotify) {
 	 			'<iframe src="https://embed.spotify.com/?uri='
 	 			+songs_uri
 	 			+'" frameborder="0" width="250px" height="80px" allowtransparency="true"></iframe>'
-	 			// +'<div id="follower">'
-	 			// +'<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:'
-	    //   		+artist_id_spotify
-	    //   		+'&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0"' 
-	    //   		+'style="border:none; overflow:hidden;" allowtransparency="true"></iframe></div>'  
 	 		);
 	      }
 	  	});
       }
   	});
-
-   //  $.ajax({
-   //    type: "GET",
-   //    dataType: "json",
-   //    cache: false,
-   //    url: "https://api.spotify.com/v1/artists/"+artist_id_spotify,
-   //    success: function(data) {
-   //    	console.log('artists', data);
-   //    	current_artist_name = artist_name;
-   //      var artist_name = data.name;
-   //      var image_url = data.images[2].url;
-   //      document.getElementById('artist-name').innerHTML = artist_name;
-   //      $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
-   //    }
-  	// });
 	console.log('artist_id_spotify', artist_id_spotify);
-	
 	
 	artist_id = artist_id_spotify;
 
@@ -116,7 +95,6 @@ function getArtistDetail(name, artist_id_spotify) {
         }
     });
 }
-// );
 
 function searchBlogs (artist_id) {
 	 en.artist.blogs(

@@ -43,7 +43,13 @@ function getArtistDetail(name, artist_id_spotify) {
       success: function(data) {
       	console.log('artists name', data);
       	artist_id_spotify = data.artists.items[0].id;
-      	var image_url = data.artists.items[0].images[2].url;
+      	if (data.artists.items[0].images[2]) {
+      		var image_url = data.artists.items[0].images[2].url;
+      	} else if (data.artists.items[0].images[1]) {
+      		var image_url = data.artists.items[0].images[1].url;
+      	} else {
+      		var image_url = data.artists.items[0].images[0].url;
+      	}	
         document.getElementById('artist-name').innerHTML = name;
         $('#artist-image').html('<img src="' +image_url+'" class="artist-avatar">');
         $.ajax({
@@ -152,7 +158,7 @@ function searchBiographies (artist_id) {
 					bio_url = bioarr[i].url;
 				}
 			}
-			if (!bio_text) {
+			if (!bio_text && bioarr[0]) {
 				bio_text = bioarr[0].text;
 				bio_url = bioarr[0].url;
 			}

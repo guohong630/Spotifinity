@@ -90,6 +90,7 @@ function createTasteProfile() {
 	} else {
 		en.catalog.create(profileName, function(data){
 			var profileID = data.response.id;
+            if (catalogs == null) catalogs = {};
 			catalogs[profileID] = profileName;
             console.log(catalogs);
 			localStorage.setItem('profiles', JSON.stringify(catalogs));

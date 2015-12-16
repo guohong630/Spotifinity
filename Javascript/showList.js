@@ -16,18 +16,21 @@
 
 // localStorage.setItem("staredArtist", JSON.stringify(artist));
 
-var catalogs = {};
+var catalogs = {
+
+};
 
 
 function showProfile() {
 	$('#create-tp-button').click(createTasteProfile);
 	var retrievedObject = localStorage.getItem("profiles");
-	var catalogs = JSON.parse(retrievedObject);
+	catalogs = JSON.parse(retrievedObject);
 	var addedObject = localStorage.getItem("addedProfile");
 	var addedCatalogs = JSON.parse(addedObject);
 	var side_bar = document.getElementById("side_bar");
 
 	console.log(side_bar)
+	console.log(catalogs);
 	for (var key in catalogs){
 		if (addedCatalogs[key] == null){
 			console.log(key)
